@@ -39,17 +39,17 @@ a { color: inherit; text-decoration: none; }
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 60;
   background: var(--bg);
   border-bottom: 1px solid var(--line-strong);
 }
 .header-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 18px 32px;
+  padding: 16px 32px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 18px;
 }
 .logo {
   font-family: var(--mono);
@@ -57,18 +57,82 @@ a { color: inherit; text-decoration: none; }
   font-weight: 700;
   letter-spacing: 0.02em;
 }
-.nav { display: flex; gap: 28px; }
-.nav-link {
-  font-family: var(--mono);
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  padding-bottom: 2px;
-  border-bottom: 1px solid transparent;
-  transition: color .15s ease, border-color .15s ease;
+
+/* 汉堡按钮 */
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 9px;
+  background: none;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  cursor: pointer;
 }
-.nav-link:hover { color: var(--ink); border-color: var(--ink); }
+.menu-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--ink);
+  transition: transform .2s ease, opacity .2s ease;
+}
+body.drawer-open .menu-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+body.drawer-open .menu-toggle span:nth-child(2) { opacity: 0; }
+body.drawer-open .menu-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ---------- 左侧抽屉侧边栏 ---------- */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(25, 25, 25, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+  z-index: 70;
+}
+body.drawer-open .drawer-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 280px;
+  max-width: 85vw;
+  background: var(--bg);
+  border-right: 1px solid var(--line-strong);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 88px 40px 40px;
+  transform: translateX(-100%);
+  transition: transform .28s cubic-bezier(.22,.61,.36,1);
+  z-index: 80;
+}
+body.drawer-open .drawer { transform: translateX(0); }
+
+.drawer-nav { display: flex; flex-direction: column; }
+.drawer-link {
+  font-family: var(--mono);
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  transition: color .15s ease, padding-left .15s ease;
+}
+.drawer-link:hover { color: var(--blue); padding-left: 8px; }
+.drawer-foot {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
 
 /* ---------- Main / layout ---------- */
 .main { max-width: 1200px; margin: 0 auto; padding: 0 32px 96px; }
@@ -230,8 +294,7 @@ a { color: inherit; text-decoration: none; }
 .post-content hr { border: none; border-top: 1px solid var(--line); margin: 2em 0; }
 
 /* ---------- Archive ---------- */
-.archive { margin-top: 48px; }
-.archive-year { margin-bottom: 40px; }
+.archive { margin-top: 48px; }.archive-year { margin-bottom: 40px; }
 .archive-year-title {
   font-family: var(--mono);
   font-size: 14px;
@@ -258,6 +321,28 @@ a { color: inherit; text-decoration: none; }
   padding-top: 2px;
 }
 .archive-title { font-size: 18px; transition: color .15s ease; }
+
+/* ---------- Tag cloud ---------- */
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 20px;
+  margin-top: 48px;
+  align-items: baseline;
+}
+.tag-cloud-item {
+  font-family: var(--mono);
+  color: var(--ink);
+  border-bottom: 1px solid transparent;
+  transition: color .15s ease, border-color .15s ease;
+}
+.tag-cloud-item:hover { color: var(--blue); border-color: var(--blue); }
+.tag-count {
+  font-size: 0.7em;
+  color: var(--ink-soft);
+  margin-left: 3px;
+  vertical-align: super;
+}
 
 /* ---------- Footer ---------- */
 .site-footer {
