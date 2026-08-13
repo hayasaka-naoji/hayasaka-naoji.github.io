@@ -1,0 +1,19 @@
+<article class="post">
+  <header class="post-header">
+    <div class="card-meta">
+      <span class="card-date"><%= date(page.date, 'YYYY.MM.DD') %></span>
+      <% if (page.tags && page.tags.length){ %>
+        <span class="card-tags">
+          <% page.tags.each(function(tag){ %>
+            <span class="tag"><%= tag.name %></span>
+          <% }) %>
+        </span>
+      <% } %>
+    </div>
+    <h1 class="post-title"><%= page.title %></h1>
+  </header>
+
+  <div class="post-content">
+    <%- page.content %>
+  </div>
+</article>

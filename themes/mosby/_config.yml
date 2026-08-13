@@ -1,0 +1,17 @@
+# Mosby Theme Configuration
+# 参考 mosbyfiles.com 的极简现代主义风格
+
+menu:
+  首页: /
+  归档: /archives/
+  标签: /tags/
+  关于: /about/
+
+# 站点副标题（hero 区的小字）
+tagline: 生活与学习的琐事
+
+# 点缀色（卡片标签/链接悬停）
+accent: '#1E4BD7'
+
+# 页脚文字
+footer: © Hayasaka · Built with Hexo

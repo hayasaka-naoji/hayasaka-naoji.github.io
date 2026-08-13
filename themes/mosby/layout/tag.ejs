@@ -1,0 +1,15 @@
+<section class="hero">
+  <p class="hero-tag">TAG</p>
+  <h1 class="hero-title"><%= page.tag || '标签' %></h1>
+</section>
+
+<section class="grid">
+  <% page.posts.each(function(post){ %>
+    <a class="card" href="<%= url_for(post.path) %>">
+      <div class="card-meta">
+        <span class="card-date"><%= date(post.date, 'YYYY.MM.DD') %></span>
+      </div>
+      <h2 class="card-title"><%= post.title %></h2>
+    </a>
+  <% }) %>
+</section>

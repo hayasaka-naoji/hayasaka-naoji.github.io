@@ -1,0 +1,22 @@
+<section class="hero">
+  <p class="hero-tag">INDEX</p>
+  <h1 class="hero-title"><%= page.title || '归档' %></h1>
+</section>
+
+<section class="archive">
+  <% var lastYear = ''; %>
+  <% page.posts.each(function(post){ %>
+    <% var y = date(post.date, 'YYYY'); %>
+    <% if (y !== lastYear){ %>
+      <% if (lastYear !== ''){ %></div><% } %>
+      <div class="archive-year">
+      <h2 class="archive-year-title"><%= y %></h2>
+      <% lastYear = y; %>
+    <% } %>
+    <a class="archive-item" href="<%= url_for(post.path) %>">
+      <span class="archive-date"><%= date(post.date, 'MM.DD') %></span>
+      <span class="archive-title"><%= post.title %></span>
+    </a>
+  <% }) %>
+  <% if (lastYear !== ''){ %></div><% } %>
+</section>

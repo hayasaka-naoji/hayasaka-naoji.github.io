@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="<%= config.language %>">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><% if (is_home()) { %><%= config.title %><% } else { %><%= page.title %> · <%= config.title %><% } %></title>
+  <%- open_graph({}) %>
+  <%- css('css/style.css') %>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <button class="menu-toggle" aria-label="打开菜单" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <a class="logo" href="<%= url_for('/') %>"><%= config.title %></a>
+    </div>
+  </header>
+
+  <div class="drawer-overlay" aria-hidden="true"></div>
+  <aside class="drawer" aria-label="导航侧边栏">
+    <nav class="drawer-nav">
+      <% for (var name in theme.menu) { %>
+        <a class="drawer-link" href="<%= url_for(theme.menu[name]) %>"><%= name %></a>
+      <% } %>
+    </nav>
+    <div class="drawer-foot"><%= theme.footer %></div>
+  </aside>
+
+  <main class="main">
+    <%- body %>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner"><%= theme.footer %></div>
+  </footer>
+
+  <script>
+    (function(){
+      var toggle = document.querySelector('.menu-toggle');
+      var overlay = document.querySelector('.drawer-overlay');
+      if(!toggle) return;
+      function open(){ document.body.classList.add('drawer-open'); toggle.setAttribute('aria-expanded','true'); }
+      function close(){ document.body.classList.remove('drawer-open'); toggle.setAttribute('aria-expanded','false'); }
+      toggle.addEventListener('click', function(e){
+        e.stopPropagation();
+        if(document.body.classList.contains('drawer-open')){ close(); } else { open(); }
+      });
+      if(overlay){ overlay.addEventListener('click', close); }
+      document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ close(); } });
+    })();
+  </script>
+</body>
+</html>

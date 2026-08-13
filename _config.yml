@@ -4,11 +4,11 @@
 
 # Site
 title: Hayasaka-Blog
-subtitle: ''
-description: ''
+subtitle: 生活与学习的琐事
+description: 早坂直治的博客——记录生活与学习的琐事
 keywords:
 author: Hayasaka
-language: en
+language: zh-CN
 timezone: ''
 
 # URL
@@ -96,11 +96,12 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: mosby
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
+
 deploy:
   type: git
   repo: https://github.com/hayasaka-naoji/hayasaka-naoji.github.io.git
-  branch: mian
+  branch: master

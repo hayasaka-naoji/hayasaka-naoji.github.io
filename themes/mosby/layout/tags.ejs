@@ -1,0 +1,12 @@
+<section class="hero">
+  <p class="hero-tag">TAGS</p>
+  <h1 class="hero-title">标签</h1>
+</section>
+
+<section class="tag-cloud">
+  <% site.tags.each(function(tag){ %>
+    <a class="tag-cloud-item" href="<%= url_for(tag.path) %>" style="font-size: <%= 14 + tag.length * 2 %>px">
+      <%= tag.name %><span class="tag-count"><%= tag.length %></span>
+    </a>
+  <% }) %>
+</section>
