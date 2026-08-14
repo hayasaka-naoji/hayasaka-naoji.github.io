@@ -12,39 +12,50 @@
 <meta property="og:description" content="今天把这个博客搭起来了。 起因挺偶然的。在了解”THE  GRATE FIER WALL”看到一个博客，叫清雨影的 Blog，界面干净。看着看着就动了心思：我是不是也能有一个这样的地方。 于是动手。用的 Hexo，主题是自己照着那个感觉一点点调的，复刻成现在这个极简的样子，取名 mosby。折腾了不少小坑——部署的 SSH 端口被墙、配置文件还被我截断过一次，好在最后都一个一个填平了。 说到底，我">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-08-13T11:21:00.000Z">
-<meta property="article:modified_time" content="2026-08-13T11:27:24.636Z">
-<meta property="article:author" content="Hayasaka">
-<meta property="article:tag" content="日记，生活">
+<meta property="article:modified_time" content="2026-08-14T02:11:37.220Z">
+<meta property="article:author" content="早坂直治">
+<meta property="article:tag" content="日记">
+<meta property="article:tag" content="生活">
 <meta name="twitter:card" content="summary">
   
 <link rel="stylesheet" href="/css/style.css">
 
 <meta name="generator" content="Hexo 8.1.2"></head>
 <body>
+  <aside class="sidebar" aria-label="导航侧边栏">
+    <div class="sidebar-inner">
+      <a class="logo" href="/">Hayasaka-Blog</a>
+
+      <nav class="sidebar-nav">
+        
+          <a class="sidebar-link" href="/">首页</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a>
+        
+          <a class="sidebar-link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
+        
+          <a class="sidebar-link" href="/archives/">归档</a>
+        
+          <a class="sidebar-link" href="/tags/">标签</a>
+        
+          <a class="sidebar-link" href="/about/">关于</a>
+        
+      </nav>
+
+      <div class="sidebar-foot">© 2026 早坂直治 · Built with Hexo</div>
+    </div>
+  </aside>
+
   <header class="site-header">
     <div class="header-inner">
-      <button class="menu-toggle" aria-label="打开菜单" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <a class="logo" href="/">Hayasaka-Blog</a>
+      <a class="profile" href="https://github.com/hayasaka-naoji" target="_blank" rel="noopener">
+        <img class="profile-avatar" src="https://github.com/hayasaka-naoji.png" alt="早坂直治 的头像" loading="lazy">
+        <span class="profile-name">早坂直治</span>
+      </a>
     </div>
   </header>
-
-  <div class="drawer-overlay" aria-hidden="true"></div>
-  <aside class="drawer" aria-label="导航侧边栏">
-    <nav class="drawer-nav">
-      
-        <a class="drawer-link" href="/">首页</a>
-      
-        <a class="drawer-link" href="/archives/">归档</a>
-      
-        <a class="drawer-link" href="/tags/">标签</a>
-      
-        <a class="drawer-link" href="/about/">关于</a>
-      
-    </nav>
-    <div class="drawer-foot">© Hayasaka · Built with Hexo</div>
-  </aside>
 
   <main class="main">
     <article class="post">
@@ -54,7 +65,9 @@
       
         <span class="card-tags">
           
-            <span class="tag">日记，生活</span>
+            <span class="tag">日记</span>
+          
+            <span class="tag">生活</span>
           
         </span>
       
@@ -76,23 +89,7 @@
   </main>
 
   <footer class="site-footer">
-    <div class="footer-inner">© Hayasaka · Built with Hexo</div>
+    <div class="footer-inner">© 2026 早坂直治 · Built with Hexo</div>
   </footer>
-
-  <script>
-    (function(){
-      var toggle = document.querySelector('.menu-toggle');
-      var overlay = document.querySelector('.drawer-overlay');
-      if(!toggle) return;
-      function open(){ document.body.classList.add('drawer-open'); toggle.setAttribute('aria-expanded','true'); }
-      function close(){ document.body.classList.remove('drawer-open'); toggle.setAttribute('aria-expanded','false'); }
-      toggle.addEventListener('click', function(e){
-        e.stopPropagation();
-        if(document.body.classList.contains('drawer-open')){ close(); } else { open(); }
-      });
-      if(overlay){ overlay.addEventListener('click', close); }
-      document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ close(); } });
-    })();
-  </script>
 </body>
 </html>

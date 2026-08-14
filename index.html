@@ -11,105 +11,91 @@
 <meta property="og:site_name" content="Hayasaka-Blog">
 <meta property="og:description" content="早坂直治的博客——记录生活与学习的琐事">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="Hayasaka">
+<meta property="article:author" content="早坂直治">
 <meta name="twitter:card" content="summary">
   
 <link rel="stylesheet" href="/css/style.css">
 
 <meta name="generator" content="Hexo 8.1.2"></head>
 <body>
+  <aside class="sidebar" aria-label="导航侧边栏">
+    <div class="sidebar-inner">
+      <a class="logo" href="/">Hayasaka-Blog</a>
+
+      <nav class="sidebar-nav">
+        
+          <a class="sidebar-link active" href="/">首页</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a>
+        
+          <a class="sidebar-link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
+        
+          <a class="sidebar-link" href="/archives/">归档</a>
+        
+          <a class="sidebar-link" href="/tags/">标签</a>
+        
+          <a class="sidebar-link" href="/about/">关于</a>
+        
+      </nav>
+
+      <div class="sidebar-foot">© 2026 早坂直治 · Built with Hexo</div>
+    </div>
+  </aside>
+
   <header class="site-header">
     <div class="header-inner">
-      <button class="menu-toggle" aria-label="打开菜单" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <a class="logo" href="/">Hayasaka-Blog</a>
+      <a class="profile" href="https://github.com/hayasaka-naoji" target="_blank" rel="noopener">
+        <img class="profile-avatar" src="https://github.com/hayasaka-naoji.png" alt="早坂直治 的头像" loading="lazy">
+        <span class="profile-name">早坂直治</span>
+      </a>
     </div>
   </header>
 
-  <div class="drawer-overlay" aria-hidden="true"></div>
-  <aside class="drawer" aria-label="导航侧边栏">
-    <nav class="drawer-nav">
-      
-        <a class="drawer-link" href="/">首页</a>
-      
-        <a class="drawer-link" href="/archives/">归档</a>
-      
-        <a class="drawer-link" href="/tags/">标签</a>
-      
-        <a class="drawer-link" href="/about/">关于</a>
-      
-    </nav>
-    <div class="drawer-foot">© Hayasaka · Built with Hexo</div>
-  </aside>
-
   <main class="main">
     <section class="hero">
-  <p class="hero-tag">PROJECT ARCHIVE</p>
+  <p class="hero-tag">HAYASAKA NAOJI</p>
   <h1 class="hero-title">Hayasaka-Blog</h1>
   <p class="hero-sub">生活与学习的琐事</p>
 </section>
 
-<section class="grid">
+<section class="intro">
+  <p>这里是我的自留地：写点日记，偶尔杂谈，也记录开发时的折腾。不追热点，不赶节奏，只是安静地写。</p>
+</section>
+
+<section class="columns">
   
-    <a class="card" href="/2026/08/13/2026-08-13/">
-      <div class="card-meta">
-        <span class="card-date">2026.08.13</span>
-        
-          <span class="card-tags">
-            
-              <span class="tag">日记，生活</span>
-            
-          </span>
-        
-      </div>
-      <h2 class="card-title">博客搭起来了</h2>
-      
+    <a class="column-card" href="/categories/%E6%97%A5%E8%AE%B0/">
+      <div class="column-rule"></div>
+      <h2 class="column-name">日记</h2>
+      <p class="column-desc">记录生活的琐碎日常</p>
     </a>
   
-    <a class="card" href="/2026/08/13/hello-world/">
-      <div class="card-meta">
-        <span class="card-date">2026.08.13</span>
-        
-          <span class="card-tags">
-            
-              <span class="tag">Hexo</span>
-            
-              <span class="tag">生活</span>
-            
-              <span class="tag">学习</span>
-            
-          </span>
-        
-      </div>
-      <h2 class="card-title">Hello World</h2>
-      
+    <a class="column-card" href="/categories/%E6%9D%82%E8%B0%88/">
+      <div class="column-rule"></div>
+      <h2 class="column-name">杂谈</h2>
+      <p class="column-desc">漫无边际的想法与闲聊</p>
+    </a>
+  
+    <a class="column-card" href="/categories/%E5%BC%80%E5%8F%91/">
+      <div class="column-rule"></div>
+      <h2 class="column-name">开发</h2>
+      <p class="column-desc">代码、工具与折腾笔记</p>
     </a>
   
 </section>
 
-
+<section class="stats">
+  <div class="stat"><span class="stat-num">3</span><span class="stat-label">篇文章</span></div>
+  <div class="stat"><span class="stat-num">5</span><span class="stat-label">个标签</span></div>
+  <div class="stat"><span class="stat-num">3</span><span class="stat-label">个专栏</span></div>
+</section>
 
   </main>
 
   <footer class="site-footer">
-    <div class="footer-inner">© Hayasaka · Built with Hexo</div>
+    <div class="footer-inner">© 2026 早坂直治 · Built with Hexo</div>
   </footer>
-
-  <script>
-    (function(){
-      var toggle = document.querySelector('.menu-toggle');
-      var overlay = document.querySelector('.drawer-overlay');
-      if(!toggle) return;
-      function open(){ document.body.classList.add('drawer-open'); toggle.setAttribute('aria-expanded','true'); }
-      function close(){ document.body.classList.remove('drawer-open'); toggle.setAttribute('aria-expanded','false'); }
-      toggle.addEventListener('click', function(e){
-        e.stopPropagation();
-        if(document.body.classList.contains('drawer-open')){ close(); } else { open(); }
-      });
-      if(overlay){ overlay.addEventListener('click', close); }
-      document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ close(); } });
-    })();
-  </script>
 </body>
 </html>
