@@ -43,7 +43,10 @@
       'cat.sub': '个专栏',
       'tag.sub': '个标签',
       'related.posts': '篇相关文章',
-      'about': '你好，我是早坂直治。'
+      'about.p1': '你好，我是早坂直治。',
+      'about.p2': '这里是我的一块自留地。平日写点日记，记录生活的琐碎；有时也发发杂谈，说说漫无边际的想法；开发相关的折腾则单独收在一个栏目里。',
+      'about.p3': '博客用 Hexo 搭建，主题 mosby 是自己照着喜欢的极简风格一点点改出来的，部署在 GitHub Pages 上。',
+      'about.p4': '不追热点，不赶节奏，只图一个能安静写字的地方。欢迎随便看看，也可以到 GitHub 上找我。'
     },
     en: {
       'lang.zh': '中',
@@ -81,7 +84,10 @@
       'cat.sub': 'columns',
       'tag.sub': 'tags',
       'related.posts': 'related posts',
-      'about': 'Hello, I am Hayasaka Naoji.'
+      'about.p1': 'Hello, I am Hayasaka Naoji.',
+      'about.p2': 'This is my own little corner. I keep a diary of everyday life, occasionally jot down wandering thoughts, and file the tinkering I do with code in a column of its own.',
+      'about.p3': 'The blog is built with Hexo. The mosby theme is something I shaped piece by piece toward the minimal look I like, and it is deployed on GitHub Pages.',
+      'about.p4': 'No hot takes, no rush — just a quiet place to write. Feel free to look around, and you can also find me on GitHub.'
     },
     ja: {
       'lang.zh': '中',
@@ -119,7 +125,10 @@
       'cat.sub': '個のカテゴリ',
       'tag.sub': '個のタグ',
       'related.posts': '件の関連記事',
-      'about': 'こんにちは、早坂直治です。'
+      'about.p1': 'こんにちは、早坂直治です。',
+      'about.p2': 'ここは私の居場所です。日常の些細なことを日記に綴り、ときどきとりとめのない考えを雑談に書きます。コードまわりの試行錯誤は、独立したコーナーにまとめています。',
+      'about.p3': 'ブログは Hexo で構築し、テーマの mosby は好きなミニマルな雰囲気に合わせて少しずつ作り上げました。GitHub Pages にデプロイしています。',
+      'about.p4': '流行を追わず、急がず、ただ静かに書ける場所が欲しかっただけです。どうぞゆっくり見ていってください。GitHub でもお会いできます。'
     }
   };
 
