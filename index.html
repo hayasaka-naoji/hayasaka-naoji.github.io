@@ -16,6 +16,9 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+  
+<script src="/js/lang.js"></script>
+
 <meta name="generator" content="Hexo 8.1.2"></head>
 <body>
   <aside class="sidebar" aria-label="导航侧边栏">
@@ -24,28 +27,34 @@
 
       <nav class="sidebar-nav">
         
-          <a class="sidebar-link active" href="/">首页</a>
         
-          <a class="sidebar-link" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a>
+          <a class="sidebar-link active" href="/" data-i18n="nav.home">首页</a>
         
-          <a class="sidebar-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a>
+          <a class="sidebar-link" href="/categories/%E6%97%A5%E8%AE%B0/" data-i18n="nav.diary">日记</a>
         
-          <a class="sidebar-link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
+          <a class="sidebar-link" href="/categories/%E6%9D%82%E8%B0%88/" data-i18n="nav.essay">杂谈</a>
         
-          <a class="sidebar-link" href="/archives/">归档</a>
+          <a class="sidebar-link" href="/categories/%E5%BC%80%E5%8F%91/" data-i18n="nav.dev">开发</a>
         
-          <a class="sidebar-link" href="/tags/">标签</a>
+          <a class="sidebar-link" href="/archives/" data-i18n="nav.archive">归档</a>
         
-          <a class="sidebar-link" href="/about/">关于</a>
+          <a class="sidebar-link" href="/tags/" data-i18n="nav.tags">标签</a>
+        
+          <a class="sidebar-link" href="/about/" data-i18n="nav.about">关于</a>
         
       </nav>
 
-      <div class="sidebar-foot">© 2026 早坂直治 · Built with Hexo</div>
+      <div class="sidebar-foot"><span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span></div>
     </div>
   </aside>
 
   <header class="site-header">
     <div class="header-inner">
+      <div class="lang-switcher" aria-label="语言切换">
+        <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+        <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+        <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+      </div>
       <a class="profile" href="https://github.com/hayasaka-naoji" target="_blank" rel="noopener">
         <img class="profile-avatar" src="https://github.com/hayasaka-naoji.png" alt="早坂直治 的头像" loading="lazy">
         <span class="profile-name">早坂直治</span>
@@ -57,45 +66,46 @@
     <section class="hero">
   <p class="hero-tag">HAYASAKA NAOJI</p>
   <h1 class="hero-title">Hayasaka-Blog</h1>
-  <p class="hero-sub">生活与学习的琐事</p>
+  <p class="hero-sub" data-i18n="tagline">生活与学习的琐事</p>
 </section>
 
 <section class="intro">
-  <p>这里是我的自留地：写点日记，偶尔杂谈，也记录开发时的折腾。不追热点，不赶节奏，只是安静地写。</p>
+  <p data-i18n="intro">这里是我的自留地：写点日记，偶尔杂谈，也记录开发时的折腾。不追热点，不赶节奏，只是安静地写。</p>
 </section>
 
 <section class="columns">
   
+  
     <a class="column-card" href="/categories/%E6%97%A5%E8%AE%B0/">
       <div class="column-rule"></div>
-      <h2 class="column-name">日记</h2>
-      <p class="column-desc">记录生活的琐碎日常</p>
+      <h2 class="column-name" data-i18n="col.diary.name">日记</h2>
+      <p class="column-desc" data-i18n="col.diary.desc">记录生活的琐碎日常</p>
     </a>
   
     <a class="column-card" href="/categories/%E6%9D%82%E8%B0%88/">
       <div class="column-rule"></div>
-      <h2 class="column-name">杂谈</h2>
-      <p class="column-desc">漫无边际的想法与闲聊</p>
+      <h2 class="column-name" data-i18n="col.essay.name">杂谈</h2>
+      <p class="column-desc" data-i18n="col.essay.desc">漫无边际的想法与闲聊</p>
     </a>
   
     <a class="column-card" href="/categories/%E5%BC%80%E5%8F%91/">
       <div class="column-rule"></div>
-      <h2 class="column-name">开发</h2>
-      <p class="column-desc">代码、工具与折腾笔记</p>
+      <h2 class="column-name" data-i18n="col.dev.name">开发</h2>
+      <p class="column-desc" data-i18n="col.dev.desc">代码、工具与折腾笔记</p>
     </a>
   
 </section>
 
 <section class="stats">
-  <div class="stat"><span class="stat-num">4</span><span class="stat-label">篇文章</span></div>
-  <div class="stat"><span class="stat-num">5</span><span class="stat-label">个标签</span></div>
-  <div class="stat"><span class="stat-num">3</span><span class="stat-label">个专栏</span></div>
+  <div class="stat"><span class="stat-num">4</span><span class="stat-label" data-i18n="stat.posts">篇文章</span></div>
+  <div class="stat"><span class="stat-num">5</span><span class="stat-label" data-i18n="stat.tags">个标签</span></div>
+  <div class="stat"><span class="stat-num">3</span><span class="stat-label" data-i18n="stat.categories">个专栏</span></div>
 </section>
 
   </main>
 
   <footer class="site-footer">
-    <div class="footer-inner">© 2026 早坂直治 · Built with Hexo</div>
+    <div class="footer-inner"><span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span></div>
   </footer>
 </body>
 </html>

@@ -16,6 +16,9 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+  
+<script src="/js/lang.js"></script>
+
 <meta name="generator" content="Hexo 8.1.2"></head>
 <body>
   <aside class="sidebar" aria-label="导航侧边栏">
@@ -24,28 +27,34 @@
 
       <nav class="sidebar-nav">
         
-          <a class="sidebar-link" href="/">首页</a>
         
-          <a class="sidebar-link" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a>
+          <a class="sidebar-link" href="/" data-i18n="nav.home">首页</a>
         
-          <a class="sidebar-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a>
+          <a class="sidebar-link" href="/categories/%E6%97%A5%E8%AE%B0/" data-i18n="nav.diary">日记</a>
         
-          <a class="sidebar-link active" href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
+          <a class="sidebar-link" href="/categories/%E6%9D%82%E8%B0%88/" data-i18n="nav.essay">杂谈</a>
         
-          <a class="sidebar-link" href="/archives/">归档</a>
+          <a class="sidebar-link active" href="/categories/%E5%BC%80%E5%8F%91/" data-i18n="nav.dev">开发</a>
         
-          <a class="sidebar-link" href="/tags/">标签</a>
+          <a class="sidebar-link" href="/archives/" data-i18n="nav.archive">归档</a>
         
-          <a class="sidebar-link" href="/about/">关于</a>
+          <a class="sidebar-link" href="/tags/" data-i18n="nav.tags">标签</a>
+        
+          <a class="sidebar-link" href="/about/" data-i18n="nav.about">关于</a>
         
       </nav>
 
-      <div class="sidebar-foot">© 2026 早坂直治 · Built with Hexo</div>
+      <div class="sidebar-foot"><span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span></div>
     </div>
   </aside>
 
   <header class="site-header">
     <div class="header-inner">
+      <div class="lang-switcher" aria-label="语言切换">
+        <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+        <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+        <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+      </div>
       <a class="profile" href="https://github.com/hayasaka-naoji" target="_blank" rel="noopener">
         <img class="profile-avatar" src="https://github.com/hayasaka-naoji.png" alt="早坂直治 的头像" loading="lazy">
         <span class="profile-name">早坂直治</span>
@@ -56,8 +65,9 @@
   <main class="main">
     <section class="hero">
   <p class="hero-tag">CATEGORY</p>
-  <h1 class="hero-title">开发</h1>
-  <p class="hero-sub">1 篇相关文章</p>
+  
+  <h1 class="hero-title" data-i18n="col.dev.name">开发</h1>
+  <p class="hero-sub">1 <span data-i18n="related.posts">篇相关文章</span></p>
 </section>
 
 <section class="grid">
@@ -84,7 +94,7 @@
   </main>
 
   <footer class="site-footer">
-    <div class="footer-inner">© 2026 早坂直治 · Built with Hexo</div>
+    <div class="footer-inner"><span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span></div>
   </footer>
 </body>
 </html>
