@@ -1,6 +1,8 @@
 <section class="hero">
   <p class="hero-tag">CATEGORY</p>
-  <h1 class="hero-title"><%= page.category || '分类' %></h1>
+  <% var colKeys = { '日记':'col.diary', '杂谈':'col.essay', '开发':'col.dev' }; %>
+  <h1 class="hero-title" data-i18n="<%= colKeys[page.category] ? colKeys[page.category] + '.name' : '' %>"><%= page.category || '分类' %></h1>
+  <p class="hero-sub"><%= page.posts.length %> <span data-i18n="related.posts">篇相关文章</span></p>
 </section>
 
 <section class="grid">
@@ -8,8 +10,16 @@
     <a class="card" href="<%= url_for(post.path) %>">
       <div class="card-meta">
         <span class="card-date"><%= date(post.date, 'YYYY.MM.DD') %></span>
+        <% if (post.tags && post.tags.length){ %>
+          <span class="card-tags">
+            <% post.tags.each(function(tag){ %>
+              <span class="tag"><%= tag.name %></span>
+            <% }) %>
+          </span>
+        <% } %>
       </div>
       <h2 class="card-title"><%= post.title %></h2>
+      <% if (post.excerpt){ %><p class="card-excerpt"><%= post.excerpt %></p><% } %>
     </a>
   <% }) %>
 </section>

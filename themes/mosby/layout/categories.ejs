@@ -1,0 +1,16 @@
+<section class="hero">
+  <p class="hero-tag">CATEGORIES</p>
+  <h1 class="hero-title" data-i18n="page.categories.title">专栏</h1>
+  <p class="hero-sub"><%= site.categories.length %> <span data-i18n="cat.sub">个专栏</span></p>
+</section>
+
+<section class="columns">
+  <% var colKeys = { '日记':'col.diary', '杂谈':'col.essay', '开发':'col.dev' }; %>
+  <% site.categories.each(function(cat){ %>
+    <a class="column-card" href="<%= url_for(cat.path) %>">
+      <div class="column-rule"></div>
+      <h2 class="column-name" data-i18n="<%= colKeys[cat.name] ? colKeys[cat.name] + '.name' : '' %>"><%= cat.name %></h2>
+      <p class="column-desc"><%= cat.length %> <span data-i18n="cat.count">篇</span></p>
+    </a>
+  <% }) %>
+</section>

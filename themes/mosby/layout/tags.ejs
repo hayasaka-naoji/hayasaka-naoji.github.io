@@ -1,11 +1,12 @@
 <section class="hero">
   <p class="hero-tag">TAGS</p>
-  <h1 class="hero-title">标签</h1>
+  <h1 class="hero-title" data-i18n="page.tags.title">标签</h1>
+  <p class="hero-sub"><%= site.tags.length %> <span data-i18n="tag.sub">个标签</span></p>
 </section>
 
 <section class="tag-cloud">
   <% site.tags.each(function(tag){ %>
-    <a class="tag-cloud-item" href="<%= url_for(tag.path) %>" style="font-size: <%= 14 + tag.length * 2 %>px">
+    <a class="tag-cloud-item" href="<%= url_for(tag.path) %>" style="font-size: <%= 15 + tag.length * 2 %>px">
       <%= tag.name %><span class="tag-count"><%= tag.length %></span>
     </a>
   <% }) %>

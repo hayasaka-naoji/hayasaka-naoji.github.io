@@ -1,6 +1,7 @@
 <section class="hero">
   <p class="hero-tag">PAGE</p>
-  <h1 class="hero-title"><%= page.title %></h1>
+  <% var pageKeys = { '关于':'nav.about', '专栏':'page.categories.title', '标签':'page.tags.title' }; %>
+  <h1 class="hero-title" data-i18n="<%= pageKeys[page.title] || '' %>"><%= page.title %></h1>
 </section>
 <article class="post">
   <div class="post-content">

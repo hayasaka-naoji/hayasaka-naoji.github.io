@@ -6,49 +6,43 @@
   <title><% if (is_home()) { %><%= config.title %><% } else { %><%= page.title %> · <%= config.title %><% } %></title>
   <%- open_graph({}) %>
   <%- css('css/style.css') %>
+  <%- js('js/lang.js') %>
 </head>
 <body>
+  <aside class="sidebar" aria-label="导航侧边栏">
+    <div class="sidebar-inner">
+      <a class="logo" href="<%= url_for('/') %>"><%= config.title %></a>
+
+      <nav class="sidebar-nav">
+        <% var menuKeys = { '首页':'nav.home', '日记':'nav.diary', '杂谈':'nav.essay', '开发':'nav.dev', '归档':'nav.archive', '标签':'nav.tags', '关于':'nav.about' }; %>
+        <% for (var name in theme.menu) { %>
+          <a class="sidebar-link<%= is_current(theme.menu[name]) ? ' active' : '' %>" href="<%= url_for(theme.menu[name]) %>" data-i18n="<%= menuKeys[name] || 'nav.home' %>"><%= name %></a>
+        <% } %>
+      </nav>
+
+      <div class="sidebar-foot">
+        <span data-i18n="footer"><%= theme.footer %></span>
+        <%- partial('_partial/lang-switcher', { modifier: 'sidebar' }) %>
+      </div>
+    </div>
+  </aside>
+
   <header class="site-header">
     <div class="header-inner">
-      <button class="menu-toggle" aria-label="打开菜单" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <a class="logo" href="<%= url_for('/') %>"><%= config.title %></a>
+      <%- partial('_partial/lang-switcher', { modifier: 'header' }) %>
+      <a class="profile" href="<%= theme.author.url %>" target="_blank" rel="noopener">
+        <img class="profile-avatar" src="<%= theme.author.avatar %>" alt="<%= theme.author.name %> 的头像" loading="lazy">
+        <span class="profile-name"><%= theme.author.name %></span>
+      </a>
     </div>
   </header>
-
-  <div class="drawer-overlay" aria-hidden="true"></div>
-  <aside class="drawer" aria-label="导航侧边栏">
-    <nav class="drawer-nav">
-      <% for (var name in theme.menu) { %>
-        <a class="drawer-link" href="<%= url_for(theme.menu[name]) %>"><%= name %></a>
-      <% } %>
-    </nav>
-    <div class="drawer-foot"><%= theme.footer %></div>
-  </aside>
 
   <main class="main">
     <%- body %>
   </main>
 
   <footer class="site-footer">
-    <div class="footer-inner"><%= theme.footer %></div>
+    <div class="footer-inner"><span data-i18n="footer"><%= theme.footer %></span></div>
   </footer>
-
-  <script>
-    (function(){
-      var toggle = document.querySelector('.menu-toggle');
-      var overlay = document.querySelector('.drawer-overlay');
-      if(!toggle) return;
-      function open(){ document.body.classList.add('drawer-open'); toggle.setAttribute('aria-expanded','true'); }
-      function close(){ document.body.classList.remove('drawer-open'); toggle.setAttribute('aria-expanded','false'); }
-      toggle.addEventListener('click', function(e){
-        e.stopPropagation();
-        if(document.body.classList.contains('drawer-open')){ close(); } else { open(); }
-      });
-      if(overlay){ overlay.addEventListener('click', close); }
-      document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ close(); } });
-    })();
-  </script>
 </body>
 </html>

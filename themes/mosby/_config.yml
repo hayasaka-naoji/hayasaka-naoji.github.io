@@ -1,17 +1,39 @@
 # Mosby Theme Configuration
 # 参考 mosbyfiles.com 的极简现代主义风格
 
+# 站点作者信息（右上角头像 + 名字）
+author:
+  name: 早坂直治
+  avatar: https://github.com/hayasaka-naoji.png
+  url: https://github.com/hayasaka-naoji
+
+# 专栏（按分类划分，用于首页卡片与侧边栏分组）
+columns:
+  - name: 日记
+    desc: 记录生活的琐碎日常
+    path: /categories/日记/
+  - name: 杂谈
+    desc: 漫无边际的想法与闲聊
+    path: /categories/杂谈/
+  - name: 开发
+    desc: 代码、工具与折腾笔记
+    path: /categories/开发/
+
+# 侧边栏导航
 menu:
   首页: /
+  日记: /categories/日记/
+  杂谈: /categories/杂谈/
+  开发: /categories/开发/
   归档: /archives/
   标签: /tags/
   关于: /about/
 
-# 站点副标题（hero 区的小字）
+# 站点副标题（首页 hero 区的小字）
 tagline: 生活与学习的琐事
 
 # 点缀色（卡片标签/链接悬停）
 accent: '#1E4BD7'
 
 # 页脚文字
-footer: © Hayasaka · Built with Hexo
+footer: © 2026 早坂直治 · Built with Hexo
