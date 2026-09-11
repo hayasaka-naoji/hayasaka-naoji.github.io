@@ -9,7 +9,7 @@
 </section>
 
 <section class="columns">
-  <% var colKeys = { '日记':'col.diary', '杂谈':'col.essay', '开发':'col.dev' }; %>
+  <% var colKeys = { '日记':'col.diary', '杂谈':'col.essay', '开发':'col.dev', '设计灵感':'col.design' }; %>
   <% (theme.columns || []).forEach(function(col){ %>
     <a class="column-card" href="<%= url_for(col.path) %>">
       <div class="column-rule"></div>

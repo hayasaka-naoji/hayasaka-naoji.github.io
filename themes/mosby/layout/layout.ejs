@@ -14,7 +14,7 @@
       <a class="logo" href="<%= url_for('/') %>"><%= config.title %></a>
 
       <nav class="sidebar-nav">
-        <% var menuKeys = { '首页':'nav.home', '日记':'nav.diary', '杂谈':'nav.essay', '开发':'nav.dev', '归档':'nav.archive', '标签':'nav.tags', '关于':'nav.about' }; %>
+        <% var menuKeys = { '首页':'nav.home', '日记':'nav.diary', '杂谈':'nav.essay', '开发':'nav.dev', '设计灵感':'nav.design', '归档':'nav.archive', '标签':'nav.tags', '关于':'nav.about' }; %>
         <% for (var name in theme.menu) { %>
           <a class="sidebar-link<%= is_current(theme.menu[name]) ? ' active' : '' %>" href="<%= url_for(theme.menu[name]) %>" data-i18n="<%= menuKeys[name] || 'nav.home' %>"><%= name %></a>
         <% } %>

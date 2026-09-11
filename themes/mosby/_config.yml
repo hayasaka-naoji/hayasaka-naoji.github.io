@@ -18,6 +18,9 @@ columns:
   - name: 开发
     desc: 代码、工具与折腾笔记
     path: /categories/开发/
+  - name: 设计灵感
+    desc: 视觉、配色与灵感碎片
+    path: /categories/设计灵感/
 
 # 侧边栏导航
 menu:
@@ -25,6 +28,7 @@ menu:
   日记: /categories/日记/
   杂谈: /categories/杂谈/
   开发: /categories/开发/
+  设计灵感: /categories/设计灵感/
   归档: /archives/
   标签: /tags/
   关于: /about/

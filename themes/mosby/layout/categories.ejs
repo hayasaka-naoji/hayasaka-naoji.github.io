@@ -5,7 +5,7 @@
 </section>
 
 <section class="columns">
-  <% var colKeys = { '日记':'col.diary', '杂谈':'col.essay', '开发':'col.dev' }; %>
+  <% var colKeys = { '日记':'col.diary', '杂谈':'col.essay', '开发':'col.dev', '设计灵感':'col.design' }; %>
   <% site.categories.each(function(cat){ %>
     <a class="column-card" href="<%= url_for(cat.path) %>">
       <div class="column-rule"></div>
