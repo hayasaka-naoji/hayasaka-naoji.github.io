@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>家用医疗站：一个止步于规划的项目 · Hayasaka-Blog</title>
+  <meta name="description" content="给中国高校智能机器人创意大赛备的方向之一，「家用智能机器人」主题：做一台家用医疗站——STM32F103C8T6 管控制和传感器，ESP32 管手机网页（局域网直连，本期不上树莓派），本期范围是冲泡子系统（水泵 + PTC 加热 + DS18B20 控到 40℃）加一个七日药盒的开盖与在位检测，形态是一周底盘加可拆日模块。立意倒是想得挺清楚：在正确的时间，把正确的东西，以正确的方法，交到正确的人手">
+<meta property="og:type" content="article">
+<meta property="og:title" content="家用医疗站：一个止步于规划的项目">
+<meta property="og:url" content="https://hayasaka-naoji.github.io/2026/10/02/2026-10-02-medical-station-postmortem/index.html">
+<meta property="og:site_name" content="Hayasaka-Blog">
+<meta property="og:description" content="给中国高校智能机器人创意大赛备的方向之一，「家用智能机器人」主题：做一台家用医疗站——STM32F103C8T6 管控制和传感器，ESP32 管手机网页（局域网直连，本期不上树莓派），本期范围是冲泡子系统（水泵 + PTC 加热 + DS18B20 控到 40℃）加一个七日药盒的开盖与在位检测，形态是一周底盘加可拆日模块。立意倒是想得挺清楚：在正确的时间，把正确的东西，以正确的方法，交到正确的人手">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hayasaka-naoji.github.io/images/memes/gaoci.gif">
+<meta property="article:published_time" content="2026-10-02T02:57:00.000Z">
+<meta property="article:modified_time" content="2026-10-02T02:59:51.217Z">
+<meta property="article:author" content="早坂直治">
+<meta property="article:tag" content="ESP32">
+<meta property="article:tag" content="STM32">
+<meta property="article:tag" content="开发">
+<meta property="article:tag" content="项目复盘">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hayasaka-naoji.github.io/images/memes/gaoci.gif">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/lang.js"></script>
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+  <aside class="sidebar" aria-label="导航侧边栏">
+    <div class="sidebar-inner">
+      <a class="logo" href="/">Hayasaka-Blog</a>
+
+      <nav class="sidebar-nav">
+        
+        
+          <a class="sidebar-link" href="/" data-i18n="nav.home">首页</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%97%A5%E8%AE%B0/" data-i18n="nav.diary">日记</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%9D%82%E8%B0%88/" data-i18n="nav.essay">杂谈</a>
+        
+          <a class="sidebar-link" href="/categories/%E5%BC%80%E5%8F%91/" data-i18n="nav.dev">开发</a>
+        
+          <a class="sidebar-link" href="/categories/%E8%AE%BE%E8%AE%A1%E7%81%B5%E6%84%9F/" data-i18n="nav.design">设计灵感</a>
+        
+          <a class="sidebar-link" href="/archives/" data-i18n="nav.archive">归档</a>
+        
+          <a class="sidebar-link" href="/tags/" data-i18n="nav.tags">标签</a>
+        
+          <a class="sidebar-link" href="/about/" data-i18n="nav.about">关于</a>
+        
+      </nav>
+
+      <div class="sidebar-foot">
+        <span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span>
+        <div class="lang-switcher lang-switcher--sidebar" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      </div>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="lang-switcher lang-switcher--header" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      <a class="profile" href="https://github.com/hayasaka-naoji" target="_blank" rel="noopener">
+        <img class="profile-avatar" src="https://github.com/hayasaka-naoji.png" alt="早坂直治 的头像" loading="lazy">
+        <span class="profile-name">早坂直治</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="main">
+    <article class="post">
+  <header class="post-header">
+    <div class="card-meta">
+      <span class="card-date">2026.10.02</span>
+      
+        <span class="card-weather">晴 20°C</span>
+      
+      
+        <span class="card-tags">
+          
+            <span class="tag">开发</span>
+          
+            <span class="tag">STM32</span>
+          
+            <span class="tag">ESP32</span>
+          
+            <span class="tag">项目复盘</span>
+          
+        </span>
+      
+    </div>
+    <h1 class="post-title">家用医疗站：一个止步于规划的项目</h1>
+  </header>
+
+  <div class="post-content">
+    <p>给中国高校智能机器人创意大赛备的方向之一，「家用智能机器人」主题：做一台家用医疗站——STM32F103C8T6 管控制和传感器，ESP32 管手机网页（局域网直连，本期不上树莓派），本期范围是冲泡子系统（水泵 + PTC 加热 + DS18B20 控到 40℃）加一个七日药盒的开盖与在位检测，形态是一周底盘加可拆日模块。立意倒是想得挺清楚：在正确的时间，把正确的东西，以正确的方法，交到正确的人手上。</p>
+<p>09-24 拍板：放弃。满配版要 240<del>320 元物料加 95</del>120 小时，三条工作线（STM32 固件、ESP32 网页、结构 CAD）压给一个人、一个月、每天 2.5~3 小时，后两条线连学习日都没有。腰斩到「药盒核心闭环」倒是能做，但那就和满大街的智能药盒毕设长得一样了。规划整体作废，物料清单作废，D01-D02 的笔记和 Zdemo 工程保留，STM32 三十天冲刺回归纯学习继续推进。</p>
+<p><img src="/images/memes/gaoci.gif" alt="家境贫寒，告辞"></p>
+<p>不过这轮规划留下来的结论是真金，记在这里，以后做任何硬件项目都用得上。</p>
+<p><strong>能排期的都不难，难的是不能排期的。</strong> 四类根本没法估工时的问题：</p>
+<ol>
+<li><strong>慢过程实验收敛</strong>：水温从加热元件到探头有十几秒纯滞后，一次整定实验就是几分钟到十几分钟——慢过程把整定能做的迭代次数砍掉两个数量级。「过程慢好观察」是错觉，看得到 ≠ 试得起。</li>
+<li><strong>计划外工作线</strong>：ESP32 网页（HTTP、页面、配网、双机联调）和结构 CAD + 打印公差，30 天学习计划完全不覆盖。</li>
+<li><strong>机电耦合</strong>：FDM 打印公差 ±0.2~0.5mm，对上微动开关零点几毫米的动作行程，七个槽位累积下来就是「有的槽检测得到、有的检测不到」；磁吸定位的磁铁还会串扰霍尔在位检测。</li>
+<li><strong>语义歧义</strong>：开盖 0.5 秒算不算取药？离站期间的事件根本观测不到。这些不先变成状态机规则，代码没法写。</li>
+</ol>
+<p>器件层面的结论：</p>
+<ul>
+<li><strong>继电器不能跑高频 PWM</strong>（触点寿命只有 10⁴~10⁵ 次），加热只能时间比例控制。bang-bang 阈值控温天然配继电器，上 PID 反而有风险。</li>
+<li><strong>PTC 自限温不是控温</strong>：居里点通常在 60~120℃，只能防失控，控不到 40℃。</li>
+<li>DS18B20 转换 750ms、AHT20 约 80ms、SSD1306 软件I2C 全屏刷新约 90ms——三个常用器件都在逼你写<strong>非阻塞状态机</strong>，1ms 节拍里不能停。单总线时序被打断，会读出 85℃（上电默认值）或 −127℃（无器件）。</li>
+<li>停泵之后水路会<strong>虹吸</strong>继续出水，出水口得高于水位，或者加单向阀。</li>
+</ul>
+<p>市场那头也有几个有意思的结论：智能药盒毕设高度同质化（F103 + 无线模块 + OLED + 舵机 + 蜂鸣器就是标准配方），高端自动分药机超 4000 元，<strong>中端（300~1000 元、有检测、能联网）反而是空位</strong>；冲剂冲泡有专利在先；适老化数据有两面性——实验室里接受度很高，真实世界闲置率很高，老人最看重的是屏幕和按钮的尺寸，物理按键优先是对的。真要重启的话，最值钱的两条路是「开盖 + 称重双信号确认已服」（约 10 元补掉误判短板）和「冲泡位 &#x3D; 日模块位」（不加零件，药盒和冲泡机变一台整机）。</p>
+<p>项目没了，学习还在。三十天冲刺照常走，D30 复盘的时候再定竞赛方向。</p>
+<p>安！</p>
+
+  </div>
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner"><span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span></div>
+  </footer>
+</body>
+</html>
