@@ -2,6 +2,9 @@
   <header class="post-header">
     <div class="card-meta">
       <span class="card-date"><%= date(page.date, 'YYYY.MM.DD') %></span>
+      <% if (page.weather){ %>
+        <span class="card-weather"><%= page.weather %></span>
+      <% } %>
       <% if (page.tags && page.tags.length){ %>
         <span class="card-tags">
           <% page.tags.each(function(tag){ %>
