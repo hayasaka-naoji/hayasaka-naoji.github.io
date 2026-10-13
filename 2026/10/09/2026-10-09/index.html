@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>给电机装上计价器 · Hayasaka-Blog</title>
+  <meta name="description" content="又是好几天没写，手倒是没停。六号到九号，整整四天都在围着同一台小电机转。   六号把舵机和电机先后送上了台架。舵机用串口控制，敲 a 到 e 就是 0 到 180 度五档，再敲个 6 它自己来回扫；电机那边正转反转停下，油门用键盘加加减减。板上同时跑着呼吸灯、扫摆、舵机、电机四家，各转各的，互不打架。中间「反转不动」卡了一阵，代码逐行查完一个字没错，最后是线的问题，换了一根就活。   七号给电">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给电机装上计价器">
+<meta property="og:url" content="https://hayasaka-naoji.github.io/2026/10/09/2026-10-09/index.html">
+<meta property="og:site_name" content="Hayasaka-Blog">
+<meta property="og:description" content="又是好几天没写，手倒是没停。六号到九号，整整四天都在围着同一台小电机转。   六号把舵机和电机先后送上了台架。舵机用串口控制，敲 a 到 e 就是 0 到 180 度五档，再敲个 6 它自己来回扫；电机那边正转反转停下，油门用键盘加加减减。板上同时跑着呼吸灯、扫摆、舵机、电机四家，各转各的，互不打架。中间「反转不动」卡了一阵，代码逐行查完一个字没错，最后是线的问题，换了一根就活。   七号给电">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-09T14:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-13T05:11:25.639Z">
+<meta property="article:author" content="早坂直治">
+<meta property="article:tag" content="日记">
+<meta property="article:tag" content="生活">
+<meta name="twitter:card" content="summary">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/lang.js"></script>
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+  <aside class="sidebar" aria-label="导航侧边栏">
+    <div class="sidebar-inner">
+      <a class="logo" href="/">Hayasaka-Blog</a>
+
+      <nav class="sidebar-nav">
+        
+        
+          <a class="sidebar-link" href="/" data-i18n="nav.home">首页</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%97%A5%E8%AE%B0/" data-i18n="nav.diary">日记</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%9D%82%E8%B0%88/" data-i18n="nav.essay">杂谈</a>
+        
+          <a class="sidebar-link" href="/categories/%E5%BC%80%E5%8F%91/" data-i18n="nav.dev">开发</a>
+        
+          <a class="sidebar-link" href="/categories/%E8%AE%BE%E8%AE%A1%E7%81%B5%E6%84%9F/" data-i18n="nav.design">设计灵感</a>
+        
+          <a class="sidebar-link" href="/archives/" data-i18n="nav.archive">归档</a>
+        
+          <a class="sidebar-link" href="/tags/" data-i18n="nav.tags">标签</a>
+        
+          <a class="sidebar-link" href="/about/" data-i18n="nav.about">关于</a>
+        
+      </nav>
+
+      <div class="sidebar-foot">
+        <span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span>
+        <div class="lang-switcher lang-switcher--sidebar" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      </div>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="lang-switcher lang-switcher--header" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      <a class="profile" href="https://github.com/hayasaka-naoji" target="_blank" rel="noopener">
+        <img class="profile-avatar" src="https://github.com/hayasaka-naoji.png" alt="早坂直治 的头像" loading="lazy">
+        <span class="profile-name">早坂直治</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="main">
+    <article class="post">
+  <header class="post-header">
+    <div class="card-meta">
+      <span class="card-date">2026.10.09</span>
+      
+        <span class="card-weather">晴 25°C</span>
+      
+      
+        <span class="card-tags">
+          
+            <span class="tag">日记</span>
+          
+            <span class="tag">生活</span>
+          
+        </span>
+      
+    </div>
+    <h1 class="post-title">给电机装上计价器</h1>
+  </header>
+
+  <div class="post-content">
+    <p>  又是好几天没写，手倒是没停。六号到九号，整整四天都在围着同一台小电机转。</p>
+<p>  六号把舵机和电机先后送上了台架。舵机用串口控制，敲 a 到 e 就是 0 到 180 度五档，再敲个 6 它自己来回扫；电机那边正转反转停下，油门用键盘加加减减。板上同时跑着呼吸灯、扫摆、舵机、电机四家，各转各的，互不打架。中间「反转不动」卡了一阵，代码逐行查完一个字没错，最后是线的问题，换了一根就活。</p>
+<p>  七号给电机装了计价器。霍尔编码器接上去，那个定时器又多了一重身份：正转加一格、反转减一格，全靠硬件自己数，CPU 都不用看。正转 +105，反转 −140，当时就觉得这俩数不太对，先记下了。</p>
+<p>  八号把格子数换算成转速。一圈输出轴 937.2 格，带小数的数在单片机里没处放，得放大十倍当整数算。账算完一对，案子大了：正反两边读数的比值稳稳停在 1.75，换了好几个条件测，比值纹丝不动。机械不对称顶多差两成，这种铁打的比值不像摩擦，像计数本身在说谎。</p>
+<p>  九号是周考核。口试 8 题拿了 7.5，丢的那半题还是老毛病——原理说得出，判据背不出。实操很顺：串口给个油门值，电机照做，编码器把实测转速传回来，一行里排着 set、spd、rpm，「设定、执行、反馈」这条回路第一次闭合。</p>
+<p>  顺手把悬案也结了。两根信号线各补一个上拉电阻，正反比从 0.577 回到 0.97，几乎严丝合缝——是计数在说谎，不是电机偏心。亏的是一天里动了两个地方（加电阻、换线），案子破了，到底谁治好的没分清。教训记下了。</p>
+<p>  数据漂亮得超出预期：占空比 30% 到 90%，转速读数就是它的 8 倍，过原点，没有死区。本来做好了低速堵转的准备，结果 30% 就照转不误。</p>
+<p>  Python 这周一天连上了三课：变量、f-string、input 一口气过。「4294967295 再加一」在 C 里会翻回 0，在 Python 里只管往上涨。学到 while 才发现 i– 这种写法压根不存在，循环变量忘了改，程序就永远跑下去，还不报错。</p>
+<p>  英语那边，拼读排到字母组合，墨墨的复习队列不能欠。</p>
+<p>  明天是周六，D15 在等我。</p>
+
+  </div>
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner"><span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span></div>
+  </footer>
+</body>
+</html>

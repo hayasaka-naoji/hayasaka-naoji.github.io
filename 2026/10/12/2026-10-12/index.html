@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>屏幕亮了 · Hayasaka-Blog</title>
+  <meta name="description" content="这三天干的事，一件比一件提气。   十号开始正经读电压。ADC 的格子数换算成毫伏，碰 3.3V、碰 GND、悬空，三种状态各看一遍。悬空的时候读数满屏乱跳，手一碰上去，读数就钉在 4051 附近纹丝不动——稳定平台是真测量，乱跳是天线，这条判据记住了。顺手把红外避障模块摸了：三针版只有开关量，输出就 0 和 1，挥一下手翻一下；想要「离多远」它给不了，信息早在模块内部的比较器那儿被砍掉了，拿">
+<meta property="og:type" content="article">
+<meta property="og:title" content="屏幕亮了">
+<meta property="og:url" content="https://hayasaka-naoji.github.io/2026/10/12/2026-10-12/index.html">
+<meta property="og:site_name" content="Hayasaka-Blog">
+<meta property="og:description" content="这三天干的事，一件比一件提气。   十号开始正经读电压。ADC 的格子数换算成毫伏，碰 3.3V、碰 GND、悬空，三种状态各看一遍。悬空的时候读数满屏乱跳，手一碰上去，读数就钉在 4051 附近纹丝不动——稳定平台是真测量，乱跳是天线，这条判据记住了。顺手把红外避障模块摸了：三针版只有开关量，输出就 0 和 1，挥一下手翻一下；想要「离多远」它给不了，信息早在模块内部的比较器那儿被砍掉了，拿">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hayasaka-naoji.github.io/images/memes/shufu.gif">
+<meta property="article:published_time" content="2026-10-12T14:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-13T05:11:26.381Z">
+<meta property="article:author" content="早坂直治">
+<meta property="article:tag" content="日记">
+<meta property="article:tag" content="生活">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hayasaka-naoji.github.io/images/memes/shufu.gif">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/lang.js"></script>
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+  <aside class="sidebar" aria-label="导航侧边栏">
+    <div class="sidebar-inner">
+      <a class="logo" href="/">Hayasaka-Blog</a>
+
+      <nav class="sidebar-nav">
+        
+        
+          <a class="sidebar-link" href="/" data-i18n="nav.home">首页</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%97%A5%E8%AE%B0/" data-i18n="nav.diary">日记</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%9D%82%E8%B0%88/" data-i18n="nav.essay">杂谈</a>
+        
+          <a class="sidebar-link" href="/categories/%E5%BC%80%E5%8F%91/" data-i18n="nav.dev">开发</a>
+        
+          <a class="sidebar-link" href="/categories/%E8%AE%BE%E8%AE%A1%E7%81%B5%E6%84%9F/" data-i18n="nav.design">设计灵感</a>
+        
+          <a class="sidebar-link" href="/archives/" data-i18n="nav.archive">归档</a>
+        
+          <a class="sidebar-link" href="/tags/" data-i18n="nav.tags">标签</a>
+        
+          <a class="sidebar-link" href="/about/" data-i18n="nav.about">关于</a>
+        
+      </nav>
+
+      <div class="sidebar-foot">
+        <span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span>
+        <div class="lang-switcher lang-switcher--sidebar" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      </div>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="lang-switcher lang-switcher--header" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      <a class="profile" href="https://github.com/hayasaka-naoji" target="_blank" rel="noopener">
+        <img class="profile-avatar" src="https://github.com/hayasaka-naoji.png" alt="早坂直治 的头像" loading="lazy">
+        <span class="profile-name">早坂直治</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="main">
+    <article class="post">
+  <header class="post-header">
+    <div class="card-meta">
+      <span class="card-date">2026.10.12</span>
+      
+        <span class="card-weather">晴 25°C</span>
+      
+      
+        <span class="card-tags">
+          
+            <span class="tag">日记</span>
+          
+            <span class="tag">生活</span>
+          
+        </span>
+      
+    </div>
+    <h1 class="post-title">屏幕亮了</h1>
+  </header>
+
+  <div class="post-content">
+    <p>  这三天干的事，一件比一件提气。</p>
+<p>  十号开始正经读电压。ADC 的格子数换算成毫伏，碰 3.3V、碰 GND、悬空，三种状态各看一遍。悬空的时候读数满屏乱跳，手一碰上去，读数就钉在 4051 附近纹丝不动——稳定平台是真测量，乱跳是天线，这条判据记住了。顺手把红外避障模块摸了：三针版只有开关量，输出就 0 和 1，挥一下手翻一下；想要「离多远」它给不了，信息早在模块内部的比较器那儿被砍掉了，拿 ADC 去读也白读。</p>
+<p>  十一号认识了个新外设：DMA。搬运数据这种重复劳动彻底甩给硬件，ADC 采完自己进货架，想看随时开柜；CPU 从「守着等」变成「看结果」，约等于站门口等快递和楼下有快递柜的区别。</p>
+<p>  也是这一天，折腾了三天的 3.3V 案子破了。邪门就邪门在，3.3V 就是 ADC 用来量的那把尺子本身，拿尺子量尺子，理论必须读满 4095，实际硬是差着 3%。稳压器、采样时间、接触电阻、时钟超频，嫌疑挨个排除，最后两个互不相关的通道同比例偏低，共同因素只剩一个——这块山寨芯片的 ADC 刻度天生就低 3%。结案陈词一行：不是我的手艺问题，是它生来如此。往后拿它量电压得先校准，芯片内部那颗 1.2V 基准就是干这个的，等做迷你示波器的时候接着用。</p>
+<p>  十二号，屏幕亮了。I2C 线上挂一块 OLED，字库塞进工程，屏上打出一行 Hayasaka，底下秒表一跳一跳。第一块上屏的东西不是电压也不是转速，是名字。</p>
+<p><img src="/images/memes/shufu.gif" alt="舒服"></p>
+<p>  Python 这三天把 for 和 list 收了。「C 的 for 是数数，Python 的 for 是遍历」，一个格子都不用管，但 range 的边界还是得数——口答「range(10) 有几个数」，我答 11 个、最后一个是 0，自己的实测数据就在屏幕上摆着，脑子里的计数器还是没摁住。十一号把周末考核考了：口试五题全过，实操当场写一个猜数字，也过了。十二号学的 list 是 C 数组的小表弟，多了个从尾巴数的本事（-1 就是最后一个），还能随时 append——顺带把三周前欠的来回流水，在 Python 里还了。</p>
+<p>  老账还挂着几笔：电机的手拧十圈标定一直没做，命令表两个键位还冲突着，30% 以下有没有死区也没探。不急，排期上都能碰到。</p>
+<p>  明天接着弄屏。慢慢来。</p>
+
+  </div>
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner"><span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span></div>
+  </footer>
+</body>
+</html>
