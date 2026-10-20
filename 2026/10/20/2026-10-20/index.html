@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>把油门交给 PID · Hayasaka-Blog</title>
+  <meta name="description" content="十七号开 PID，先学位置式。   P、I、D 三句话：P 管差多少，I 管差久了补上，D 管变化太快就刹车。公式不复杂，难的是看它们打架。先在假电机上跑：两级惯性，每 10 毫秒各追 10%，会冲过头，正好给 D 演戏。   第一跑只给 P。目标 60，实际停在 40，误差 20。这不是 bug，是撑住输出 40 必须付的代价——P 一旦看到偏差为零，输出也归零，系统只能停在 40。   第">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把油门交给 PID">
+<meta property="og:url" content="https://hayasaka-naoji.github.io/2026/10/20/2026-10-20/index.html">
+<meta property="og:site_name" content="Hayasaka-Blog">
+<meta property="og:description" content="十七号开 PID，先学位置式。   P、I、D 三句话：P 管差多少，I 管差久了补上，D 管变化太快就刹车。公式不复杂，难的是看它们打架。先在假电机上跑：两级惯性，每 10 毫秒各追 10%，会冲过头，正好给 D 演戏。   第一跑只给 P。目标 60，实际停在 40，误差 20。这不是 bug，是撑住输出 40 必须付的代价——P 一旦看到偏差为零，输出也归零，系统只能停在 40。   第">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-20T14:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-20T03:06:58.885Z">
+<meta property="article:author" content="早坂直治">
+<meta property="article:tag" content="日记">
+<meta property="article:tag" content="生活">
+<meta name="twitter:card" content="summary">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/lang.js"></script>
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+  <aside class="sidebar" aria-label="导航侧边栏">
+    <div class="sidebar-inner">
+      <a class="logo" href="/">Hayasaka-Blog</a>
+
+      <nav class="sidebar-nav">
+        
+        
+          <a class="sidebar-link" href="/" data-i18n="nav.home">首页</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%97%A5%E8%AE%B0/" data-i18n="nav.diary">日记</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%9D%82%E8%B0%88/" data-i18n="nav.essay">杂谈</a>
+        
+          <a class="sidebar-link" href="/categories/%E5%BC%80%E5%8F%91/" data-i18n="nav.dev">开发</a>
+        
+          <a class="sidebar-link" href="/categories/%E8%AE%BE%E8%AE%A1%E7%81%B5%E6%84%9F/" data-i18n="nav.design">设计灵感</a>
+        
+          <a class="sidebar-link" href="/archives/" data-i18n="nav.archive">归档</a>
+        
+          <a class="sidebar-link" href="/tags/" data-i18n="nav.tags">标签</a>
+        
+          <a class="sidebar-link" href="/about/" data-i18n="nav.about">关于</a>
+        
+      </nav>
+
+      <div class="sidebar-foot">
+        <span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span>
+        <div class="lang-switcher lang-switcher--sidebar" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      </div>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="lang-switcher lang-switcher--header" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      <a class="profile" href="https://github.com/hayasaka-naoji" target="_blank" rel="noopener">
+        <img class="profile-avatar" src="https://github.com/hayasaka-naoji.png" alt="早坂直治 的头像" loading="lazy">
+        <span class="profile-name">早坂直治</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="main">
+    <article class="post">
+  <header class="post-header">
+    <div class="card-meta">
+      <span class="card-date">2026.10.20</span>
+      
+        <span class="card-weather">阵雨 28°C</span>
+      
+      
+        <span class="card-tags">
+          
+            <span class="tag">日记</span>
+          
+            <span class="tag">生活</span>
+          
+        </span>
+      
+    </div>
+    <h1 class="post-title">把油门交给 PID</h1>
+  </header>
+
+  <div class="post-content">
+    <p>  十七号开 PID，先学位置式。</p>
+<p>  P、I、D 三句话：P 管差多少，I 管差久了补上，D 管变化太快就刹车。公式不复杂，难的是看它们打架。先在假电机上跑：两级惯性，每 10 毫秒各追 10%，会冲过头，正好给 D 演戏。</p>
+<p>  第一跑只给 P。目标 60，实际停在 40，误差 20。这不是 bug，是撑住输出 40 必须付的代价——P 一旦看到偏差为零，输出也归零，系统只能停在 40。</p>
+<p>  第二跑加 I。冲到了 81，稳态回到 60。峰值那一行拆开看很有意思：P 已经在踩刹车，I 还在还过去的旧账。积分不是当前误差，是误差的历史。</p>
+<p>  第三跑加 D。摆幅小了，稳得早了，但第一峰几乎没压下去。峰值处变化率接近零，D 本来就没多少力；它反而让上升变慢，误差为正的时间变长，积分多攒了一笔。两个效果抵消。D 不是一直往下压的刹车，是反对变化的减震器，上升段踩、下降段托。</p>
+<p>  十八号跑完三趟，顺带破了个案。链接突然报错，指向 HAL_DMA_IRQHandler，看着像 DMA 坏了。真正的原因在 641 行：__HAL_DMA_CLEAR_FLAG 少了开头两个下划线，变成未定义函数。拿 ST 原版驱动全文 diff，整个文件就这一行不同。供应商的 HAL 是只读区，报错先怀疑被误改，别手改驱动。教训还有一条：改代码前先看 CubeIDE 标签页的文件名，这是文件级落点错位。</p>
+<p>  也是这天发现，报表是 200 毫秒一行，PID 住在 10 毫秒的控制拍里。OLED 每 200 毫秒刷一次，占主循环 150 毫秒，100 毫秒的报表门被拖成 200 毫秒。控制没漏，记录漏了——真峰值 86.5，日志只抓到 81.2。看曲线不能只看采样最高点。</p>
+<p>  十九号把位置式改成增量式，上真电机。</p>
+<p>  增量式算的是「这一拍比上一拍该多给多少」，把位置式做一次减法。积分账本整项消失，但积分作用没消失——Ki 乘本拍误差，每拍往累加器里加一点，累计效果一样。限幅加在累加器上，撞顶后多出来的增量直接丢掉，天然抗积分饱和；改参数也只影响下一拍加多少，输出不会跳变。</p>
+<p>  上真电机前先做开环标定：0、20%、40%、70%、90% 的占空比，对应 0、93、202、354、457 转，斜率 5.45、5.07、5.15，平均 K 约 5.2 转每百分点。目标 200 转，占空比大约 40%，和插值对得上。</p>
+<p>  闭环第一跑翻车了。目标是 200，实际读数从 0 跑到 −22、−175，最后钉在 −366，输出顶着 70 不动。误差 200 − (−366) &#x3D; 566，越跑越远——负反馈接成了正反馈。根因是 t 在这台机器上读负，而 OLED 旁边那行注释写着「r 读负 &#x2F; t 读正」，那是 D14 换线之前的二手资料。以读数为准，开 f 之前先用 r 把方向立起来，再跑就顺了。</p>
+<p>  还有两个小坑：f 只管闭环，不管方向；y 停车会把方向清掉，重新开 f 前得再 r 一次。命令回显也是一张旧照片，编码器转速每 100 毫秒才更新一次，敲命令时看到的是上一窗口的数。</p>
+<p>  调好之后的数据很好看：目标 200，实际稳在 199<del>202，占空比 39，没有超调。Ki 从 0.03 加到 0.08，到位时间从六七秒缩到三秒。250 转那档有 ±2</del>3 转的小跳，是 1% 占空比约 5.2 转的量化极限环，不是振荡失控。</p>
+<p>  这两天最大的收获不是公式，是那句自己写在笔记里的话：闭环不是把 PID 写出来就完了，入口、符号、量程、限幅，任何一环没接上，现象都像 PID 坏了。注释是二手资料，读数是现场。</p>
+<p>  D24 排在明天，超声波输入捕获，给小车装眼睛。今天先把这几天的账记下来。</p>
+<p>  书库里多了一本《悉达多》，黑塞的，中译分章归档，先放着。听说他最后在河边学会了听——我这两天也在听，听编码器每 100 毫秒报一次转速。</p>
+<p>  安！</p>
+
+  </div>
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner"><span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span></div>
+  </footer>
+</body>
+</html>
