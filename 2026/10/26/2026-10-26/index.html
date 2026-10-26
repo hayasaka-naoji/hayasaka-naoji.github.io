@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>只留一个司机 · Hayasaka-Blog</title>
+  <meta name="description" content="二十一号，D25 收在板上。   避障是个三态机：GO、SLOW、STOP。阈值不是一条线，是一条带。进 STOP 要小于 200mm，出 STOP 要大于 250mm；进 GO 小于 400，出 GO 大于 450。物体停在 198~224mm 之间，连续十一拍读数都在 200 线以上——201、205、204、204、205、217、214、205、204、204、224——一条 stat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="只留一个司机">
+<meta property="og:url" content="https://hayasaka-naoji.github.io/2026/10/26/2026-10-26/index.html">
+<meta property="og:site_name" content="Hayasaka-Blog">
+<meta property="og:description" content="二十一号，D25 收在板上。   避障是个三态机：GO、SLOW、STOP。阈值不是一条线，是一条带。进 STOP 要小于 200mm，出 STOP 要大于 250mm；进 GO 小于 400，出 GO 大于 450。物体停在 198~224mm 之间，连续十一拍读数都在 200 线以上——201、205、204、204、205、217、214、205、204、204、224——一条 stat">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-26T14:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-26T11:49:29.621Z">
+<meta property="article:author" content="早坂直治">
+<meta property="article:tag" content="日记">
+<meta property="article:tag" content="生活">
+<meta name="twitter:card" content="summary">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/lang.js"></script>
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+  <aside class="sidebar" aria-label="导航侧边栏">
+    <div class="sidebar-inner">
+      <a class="logo" href="/">Hayasaka-Blog</a>
+
+      <nav class="sidebar-nav">
+        
+        
+          <a class="sidebar-link" href="/" data-i18n="nav.home">首页</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%97%A5%E8%AE%B0/" data-i18n="nav.diary">日记</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%9D%82%E8%B0%88/" data-i18n="nav.essay">杂谈</a>
+        
+          <a class="sidebar-link" href="/categories/%E5%BC%80%E5%8F%91/" data-i18n="nav.dev">开发</a>
+        
+          <a class="sidebar-link" href="/categories/%E8%AE%BE%E8%AE%A1%E7%81%B5%E6%84%9F/" data-i18n="nav.design">设计灵感</a>
+        
+          <a class="sidebar-link" href="/archives/" data-i18n="nav.archive">归档</a>
+        
+          <a class="sidebar-link" href="/tags/" data-i18n="nav.tags">标签</a>
+        
+          <a class="sidebar-link" href="/about/" data-i18n="nav.about">关于</a>
+        
+      </nav>
+
+      <div class="sidebar-foot">
+        <span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span>
+        <div class="lang-switcher lang-switcher--sidebar" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      </div>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="lang-switcher lang-switcher--header" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      <a class="profile" href="https://github.com/hayasaka-naoji" target="_blank" rel="noopener">
+        <img class="profile-avatar" src="https://github.com/hayasaka-naoji.png" alt="早坂直治 的头像" loading="lazy">
+        <span class="profile-name">早坂直治</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="main">
+    <article class="post">
+  <header class="post-header">
+    <div class="card-meta">
+      <span class="card-date">2026.10.26</span>
+      
+        <span class="card-weather">晴 23°C</span>
+      
+      
+        <span class="card-tags">
+          
+            <span class="tag">日记</span>
+          
+            <span class="tag">生活</span>
+          
+        </span>
+      
+    </div>
+    <h1 class="post-title">只留一个司机</h1>
+  </header>
+
+  <div class="post-content">
+    <p>  二十一号，D25 收在板上。</p>
+<p>  避障是个三态机：GO、SLOW、STOP。阈值不是一条线，是一条带。进 STOP 要小于 200mm，出 STOP 要大于 250mm；进 GO 小于 400，出 GO 大于 450。物体停在 198~224mm 之间，连续十一拍读数都在 200 线以上——201、205、204、204、205、217、214、205、204、204、224——一条 <code>state=</code> 都没冒。一直等到 324mm，才 <code>state=1</code>。要是只有一条 200 的线，这里会每 200ms 在 0 和 20 之间翻一次，车会打摆子。</p>
+<p>  两拍延迟是有账的。GO 不跳级，每拍只走一步，快速逼近要两拍 400ms 才停；40% 占空比约 200rpm，6.5cm 轮，400ms 能走 27cm。装车前得把急停直跳补上。</p>
+<p>  油门只能有一个司机。手动命令、转速闭环、避障，三个司机抢一个 CCR4。规矩是同一时刻只留一个：开 <code>m</code> 先关 <code>f</code>，开 <code>f</code> 先关 <code>m</code>，手动命令来了两个都下台。代码层落地得很硬——全工程写 TIM1 CH4 的语句只有 <code>motor.c</code> 里 <code>Motor_SetDuty</code> 一行，<code>grep TIM_CHANNEL_4 Core/Src/*.c</code> 可验。</p>
+<p>  未知不等于安全。<code>timeout</code>、还没测过，一律 STOP，不是 GO；上电初值就是 STOP；开避障先收油，等第一发有效距离再放开，所以会看到 0→20→40 的软启动两拍。</p>
+<p>  这天最值钱的是两种断线。拔 Trig，模块根本不发，无回波，<code>dist=timeout</code> 连发 67 行——安全。拔 Echo，PB5 悬空，高阻脚当天线，捡到 50Hz 工频的半周，约 10ms，算出来是 1.7m 的“有效距离”，<code>valid=1</code>，fail-safe 被绕过去了，车会照着假距离跑。修法是 PB5 加下拉：悬空时被拉低，无沿，timeout，STOP——把危险断线变成安全断线。判据也升级了：不是“等于某个固定值”，而是“宽度绕着某个已知周期转”。D24 的 1500µs 是偷了舵机的 PWM，这次是偷了工频。</p>
+<p>  顺手把主函数拆了。1989 行降到 867 行，八个模块加一个 <code>app.h</code>：pid、motor、sonar、avoid、servo、adc、ui、cmd。死代码搬进 <code>Docs/lessons_archive.c</code>，不参与编译。0 警告，text 40020，bss 3452——bss 没涨，说明数据只搬了一次家，没抄成两份。</p>
+<p>  二十二号，阴。英语到 D25，将来时。<code>will</code> 是临时决定、预测；<code>be going to</code> 是早就计划好、有迹象。这一周两样都有：计划是 <code>be going to</code>，临时起意是 <code>will</code>。</p>
+<p>  把《悉达多》的目录和译名说明收了尾。书末戈文达吻悉达多的额头，看见一条脸河，鱼、婴儿、凶手、诸神，全在流；最后那张脸在微笑。悉达多说，爱是万事中最要紧的事，事物胜过言语。先记着。</p>
+<p>  二十三号，雨。装 Rust 1.99.1，GNU 工具链复用现成的 MinGW，没装几个 GB 的 Visual Studio Build Tools。然后写了 32 周的 C++&#x2F;Rust 计划——C++ 问“谁来负责”，Rust 问“编译器能证明吗”，同一组问题，两套默认答案。</p>
+<p>  计划的第一条不是学什么，是不抢时间：前两周每周两次，每次 45~60 分钟；Python 28 号转主课；STM32 或 Python 周考核没过，C++&#x2F;Rust 当周只复习。写在最前面的一句话是“长跑，不抢跑”。CR01 和 CR02 先写好了，hello 还没跑——跑道先修，飞机不急。</p>
+<p>  二十四号，雨下了 35mm。给计划画了三张图：编译流水线、内存布局、32 周路线。把 32 周摊开看，才知道第一周该站在哪。雨声里画图，比读十页计划踏实。</p>
+<p>  二十五号，毛毛雨。给库做大扫除：git 第一次全量提交，配着 <code>.gitignore</code> 建了基线；配套资料做了 ASCII 收编；真题去重，删掉的 6 个文件又被我请回来了——备份不嫌多，索引只能有一份；EN 打卡从 9 月 29 号补到 10 月 25 号；MOC 和博客索引刷新。整理不是删，是让每样东西有地址。</p>
+<p>  同一天，净水机从可行性报告走到工程图：技术方案 v1、产品创意设计报告 v1，还有六张图——系统总览、三层架构、逻辑链、取水状态机、固件任务树、产品三层概要。</p>
+<p>  主控定 F407VGT6，配 DS3231、AT24C32，ESP32-C3 子板可选；三通阀断电回分流，并联不改原龙头；flush 不用泵，靠管线压力；BOM 205~220，样机不超 300。核心还是那句：个人饮水暴露 &#x3D; 水的时变质量 × 个人饮用量。边界也写清楚了：TDS 只反映溶解性总固体，不反映微生物、有机物、余氯；暴露是行为提醒，不是医学诊断。两道门还开着：正式专利检索、组队。</p>
+<p>  英语 W4 走到 D28：D24 现在时和过去时，D25 将来时，D26、D27 简单句精读，D28 是阶段一出口考——20 个音标读对 18 个，10 个句子划主谓宾归句型。两项都过才进阶段二，不过顺延两三天。规矩是先量再走。</p>
+<p>  二十六号，晴。今天没开新坑，把账记下来。STM32 的笔记停在 D25，计划表上 D26 到 D30 还排着：调稳、整理代码库、总考核、补弱、收官，排到 27 号。Python 28 号转正，每天一个半到两小时。C++&#x2F;Rust 在副驾。几条线挤在一起，最怕的不是慢，是同时踩油门。</p>
+<p>  这一周没做成什么大事，主要是把摊子收成几张图，把每条线排好队。一个司机，一脚油门。明天 D30，收官，定竞赛方向；再往后，Python 主课，英语阶段二。</p>
+<p>  安！</p>
+<p>最近计较忙，周末去了趟上城和强他们给楠过了个生日，最近做的事情有点多，总之在慢慢的变好</p>
+
+  </div>
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner"><span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span></div>
+  </footer>
+</body>
+</html>
