@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>菱形、缺失的 DLL，和 37 个字符 · Hayasaka-Blog</title>
+  <meta name="description" content="FlyMcu 是我烧 STM32 的老工具——2014 年的 Delphi 程序，昨天刚逆过它的协议。今晚打开，满屏菱形：标题成了 FlyMcu V0.188--◆◆◆◆◆◆◆◆◆◆--www.mcuisp.com，按钮、菜单、下拉框一个都不认识，但 bps:115200、STMISP、.hex 这些 ASCII 一个都没坏。 ASCII 正常、非 ASCII 全坏，这不是字体缺失，也不是程序损坏">
+<meta property="og:type" content="article">
+<meta property="og:title" content="菱形、缺失的 DLL，和 37 个字符">
+<meta property="og:url" content="https://hayasaka-naoji.github.io/2026/10/28/2026-10-28-flymcu-mojibake/index.html">
+<meta property="og:site_name" content="Hayasaka-Blog">
+<meta property="og:description" content="FlyMcu 是我烧 STM32 的老工具——2014 年的 Delphi 程序，昨天刚逆过它的协议。今晚打开，满屏菱形：标题成了 FlyMcu V0.188--◆◆◆◆◆◆◆◆◆◆--www.mcuisp.com，按钮、菜单、下拉框一个都不认识，但 bps:115200、STMISP、.hex 这些 ASCII 一个都没坏。 ASCII 正常、非 ASCII 全坏，这不是字体缺失，也不是程序损坏">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-28T14:10:00.000Z">
+<meta property="article:modified_time" content="2026-10-28T13:09:40.169Z">
+<meta property="article:author" content="早坂直治">
+<meta property="article:tag" content="FlyMcu">
+<meta property="article:tag" content="Windows">
+<meta property="article:tag" content="开发">
+<meta property="article:tag" content="编码">
+<meta name="twitter:card" content="summary">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/lang.js"></script>
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+  <aside class="sidebar" aria-label="导航侧边栏">
+    <div class="sidebar-inner">
+      <a class="logo" href="/">Hayasaka-Blog</a>
+
+      <nav class="sidebar-nav">
+        
+        
+          <a class="sidebar-link" href="/" data-i18n="nav.home">首页</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%97%A5%E8%AE%B0/" data-i18n="nav.diary">日记</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%9D%82%E8%B0%88/" data-i18n="nav.essay">杂谈</a>
+        
+          <a class="sidebar-link" href="/categories/%E5%BC%80%E5%8F%91/" data-i18n="nav.dev">开发</a>
+        
+          <a class="sidebar-link" href="/categories/%E8%AE%BE%E8%AE%A1%E7%81%B5%E6%84%9F/" data-i18n="nav.design">设计灵感</a>
+        
+          <a class="sidebar-link" href="/archives/" data-i18n="nav.archive">归档</a>
+        
+          <a class="sidebar-link" href="/tags/" data-i18n="nav.tags">标签</a>
+        
+          <a class="sidebar-link" href="/about/" data-i18n="nav.about">关于</a>
+        
+      </nav>
+
+      <div class="sidebar-foot">
+        <span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span>
+        <div class="lang-switcher lang-switcher--sidebar" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      </div>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="lang-switcher lang-switcher--header" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      <a class="profile" href="https://github.com/hayasaka-naoji" target="_blank" rel="noopener">
+        <img class="profile-avatar" src="https://github.com/hayasaka-naoji.png" alt="早坂直治 的头像" loading="lazy">
+        <span class="profile-name">早坂直治</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="main">
+    <article class="post">
+  <header class="post-header">
+    <div class="card-meta">
+      <span class="card-date">2026.10.28</span>
+      
+        <span class="card-weather">阴 21°C</span>
+      
+      
+        <span class="card-tags">
+          
+            <span class="tag">开发</span>
+          
+            <span class="tag">Windows</span>
+          
+            <span class="tag">编码</span>
+          
+            <span class="tag">FlyMcu</span>
+          
+        </span>
+      
+    </div>
+    <h1 class="post-title">菱形、缺失的 DLL，和 37 个字符</h1>
+  </header>
+
+  <div class="post-content">
+    <p>FlyMcu 是我烧 STM32 的老工具——2014 年的 Delphi 程序，昨天刚逆过它的协议。今晚打开，满屏菱形：标题成了 <code>FlyMcu V0.188--◆◆◆◆◆◆◆◆◆◆--www.mcuisp.com</code>，按钮、菜单、下拉框一个都不认识，但 <code>bps:115200</code>、<code>STMISP</code>、<code>.hex</code> 这些 ASCII 一个都没坏。</p>
+<p>ASCII 正常、非 ASCII 全坏，这不是字体缺失，也不是程序损坏，是编码。</p>
+<h2 id="病灶在系统，不在程序"><a href="#病灶在系统，不在程序" class="headerlink" title="病灶在系统，不在程序"></a>病灶在系统，不在程序</h2><p>先看系统区域：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Get-WinSystemLocale</span> | <span class="built_in">Select-Object</span> Name, DisplayName</span><br><span class="line"><span class="comment"># Name: zh-CN   DisplayName: Chinese (Simplified, PRC)</span></span><br></pre></td></tr></table></figure>
+
+<p>区域是中国没错，再看代码页：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ACP   = 65001</span><br><span class="line">OEMCP = 65001</span><br><span class="line">MACCP = 65001</span><br></pre></td></tr></table></figure>
+
+<p>中文系统的 ANSI 代码页应该是 <strong>936</strong>（GBK）。65001 是 UTF-8——这台机器开了「Beta: 使用 Unicode UTF-8 提供全球语言支持」。FlyMcu 的界面字符串是 GBK 字节，程序请 Windows 按 ACP 解码，结果被当成 UTF-8，几乎全部非法，替换成 U+FFFD，渲染出来就是一排菱形。</p>
+<p>两条路：关掉那个 Beta 开关（ACP 回到 936，但要重启），或者按进程模拟区域。选后者。</p>
+<h2 id="第一站：Locale-Emulator，被一个缺失的-DLL-拦下"><a href="#第一站：Locale-Emulator，被一个缺失的-DLL-拦下" class="headerlink" title="第一站：Locale Emulator，被一个缺失的 DLL 拦下"></a>第一站：Locale Emulator，被一个缺失的 DLL 拦下</h2><p>按进程模拟区域的老牌工具是 Locale Emulator（LE），从 GitHub 拿 2.5.0.1 的包。</p>
+<p>解压，<code>LEProc.exe</code> 一跑就退，应用日志里 .NET 运行时抛 <code>System.IO.FileNotFoundException</code>，堆栈只有一行 <code>LEProc.Program.Main</code>，连异常消息都打印不出来（ToString 自己失败了）。</p>
+<p>用 32 位 PowerShell 反射调它的 <code>Main</code>，把真实异常挖出来：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$asm</span> = [<span class="type">Reflection.Assembly</span>]::LoadFile(<span class="string">&#x27;LEProc.exe&#x27;</span>)</span><br><span class="line"><span class="variable">$m</span> = <span class="variable">$asm</span>.GetType(<span class="string">&#x27;LEProc.Program&#x27;</span>).GetMethod(<span class="string">&#x27;Main&#x27;</span>)</span><br><span class="line"><span class="keyword">try</span> &#123; <span class="variable">$m</span>.Invoke(<span class="variable">$null</span>, <span class="selector-tag">@</span>(,[<span class="built_in">string</span>[]]<span class="selector-tag">@</span>(<span class="string">&#x27;-leversion&#x27;</span>))) &#125;</span><br><span class="line"><span class="keyword">catch</span> &#123; (<span class="variable">$_</span>.Exception.GetBaseException()).Message &#125;</span><br><span class="line"><span class="comment"># Could not load file or assembly &#x27;LECommonLibrary, Version=0.0.0.0,</span></span><br><span class="line"><span class="comment"># Culture=neutral, PublicKeyToken=a5ce8326c28d7c91&#x27; or one of its dependencies.</span></span><br></pre></td></tr></table></figure>
+
+<p><code>LECommonLibrary.dll</code> 不在包里。我又去核对了 GitHub 上 2.4.0.0、2.4.1.0、2.5.0.1 三个版本的 zip 中央目录——<strong>都没有这个文件</strong>。不是下载坏了，是上游打包就缺（下载量三百万，只能说大部分人用的是别处的整合包）。从第三方补一个来路不明的 DLL 不可控，放弃。</p>
+<h2 id="第二站：Locale-Remulator"><a href="#第二站：Locale-Remulator" class="headerlink" title="第二站：Locale Remulator"></a>第二站：Locale Remulator</h2><p>换代用品：Locale Remulator（LR），基于 Detours 的同类工具，x86&#x2F;x64 都管，1.6.0 还在维护。</p>
+<p>首次运行 <code>LRProc.exe</code> 会在自己目录下生成 <code>LRConfig.xml</code>，预置日文、韩文、繁体中文，<strong>没有简体中文</strong>。照着格式加一条：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Profile</span> <span class="attr">Name</span>=<span class="string">&quot;中文(简体)&quot;</span> <span class="attr">Guid</span>=<span class="string">&quot;0a7d3e14-6b2f-4c85-9a41-2e5d8f7b1c93&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Location</span>&gt;</span>zh-CN<span class="tag">&lt;/<span class="name">Location</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">CodePage</span>&gt;</span>936<span class="tag">&lt;/<span class="name">CodePage</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">LCID</span>&gt;</span>2052<span class="tag">&lt;/<span class="name">LCID</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">TimeZone</span>&gt;</span>China Standard Time<span class="tag">&lt;/<span class="name">TimeZone</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Bias</span>&gt;</span>480<span class="tag">&lt;/<span class="name">Bias</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">RunAsAdmin</span>&gt;</span>false<span class="tag">&lt;/<span class="name">RunAsAdmin</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">HookIME</span>&gt;</span>false<span class="tag">&lt;/<span class="name">HookIME</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">HookLCID</span>&gt;</span>false<span class="tag">&lt;/<span class="name">HookLCID</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Profile</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>用法就一句：<code>LRProc.exe GUID &quot;目标.exe&quot;</code>。</p>
+<p>第一次跑起来，界面干净了——但变成英文，<code>MCU In System Programmer</code>。</p>
+<h2 id="坑一：HookLCID-一开，中文变英文"><a href="#坑一：HookLCID-一开，中文变英文" class="headerlink" title="坑一：HookLCID 一开，中文变英文"></a>坑一：HookLCID 一开，中文变英文</h2><p>LR 的 <code>HookLCID</code> 决定要不要连 LCID 一起模拟。照默认开着，FlyMcu 直接切英文资源；改成 <code>false</code>（只钩代码页），FlyMcu 按真实系统 LCID 判断出中文、加载中文资源，再交给 936 解码——满屏正常中文。</p>
+<p>判据记下来：<strong>只管代码页，别动 LCID</strong>。语言选择交给程序自己判断，区域工具只负责让它”解对码”。</p>
+<h2 id="坑二：快捷方式双击没反应"><a href="#坑二：快捷方式双击没反应" class="headerlink" title="坑二：快捷方式双击没反应"></a>坑二：快捷方式双击没反应</h2><p>给桌面做个快捷方式指向 <code>LRProc.exe</code>，双击——没有窗口、没有报错、进程列表里空无一物。</p>
+<p>排查过程比较笨但有效：</p>
+<ul>
+<li>notepad 快捷方式正常 → <code>.lnk</code> 机制没坏</li>
+<li><code>.bat</code> 里同步调 <code>LRProc.exe</code> 并接上日志，它 <strong>0.1 秒 exit 0</strong> → 不是没启动，是启动完自己退了</li>
+<li>同样的命令从 PowerShell <code>Start-Process</code> 直接调，完全正常</li>
+</ul>
+<p>差别只剩一个：<strong>参数里 GUID 有没有引号</strong>。对照实验：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不带引号 —— 正常拉起 FlyMcu</span></span><br><span class="line"><span class="built_in">Start-Process</span> LRProc.exe <span class="literal">-ArgumentList</span> <span class="string">&#x27;0a7d3e14-6b2f-4c85-9a41-2e5d8f7b1c93&#x27;</span>, <span class="string">&#x27;&quot;D:\...\FlyMcu.exe&quot;&#x27;</span></span><br><span class="line"><span class="comment"># GUID 带引号 —— 静默失败</span></span><br><span class="line"><span class="built_in">Start-Process</span> LRProc.exe <span class="literal">-ArgumentList</span> <span class="string">&#x27;&quot;0a7d3e14-6b2f-4c85-9a41-2e5d8f7b1c93&quot;&#x27;</span>, <span class="string">&#x27;&quot;D:\...\FlyMcu.exe&quot;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>把 <code>LRProc.cpp</code> 拉下来看源码，问题写在第 20、54、55 行：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> GuidLength = <span class="number">37</span>;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">lpCmdLine = <span class="built_in">wcsstr</span>(lpCmdLine, __wargv[<span class="number">1</span>]);</span><br><span class="line">LPWSTR CommandLine = lpCmdLine + GuidLength;</span><br></pre></td></tr></table></figure>
+
+<p>它找到 GUID 在原始命令行里的位置，<strong>硬编码跳过 37 个字符</strong>，把剩下的一段当成要启动的命令行交给 <code>DetourCreateProcessWithDllExW</code>。</p>
+<p>GUID 是 36 个字符，加一个空格正好 37。不写引号时，跳过 GUID 和它后面的空格，剩下的命令行以 <code>&quot;</code> 开头，CreateProcess 解析正常。一旦写成 <code>&quot;GUID&quot;</code>，<code>wcsstr</code> 找到的位置在左引号之后，多出来的右引号把偏移整体推后一位——跳过 37 个字符落在空格上，剩下的命令行变成<strong>前导空格 + 路径</strong>，这条路就走不通了。而 <code>DetourCreateProcessWithDllExW</code> 的返回值<strong>根本没人检查</strong>，函数直接 <code>return 0</code>。</p>
+<p>于是所有症状都成立：exit 0、无输出、无进程、无窗口。不是环境问题，是”魔数偏移 + 忽略返回值”的经典组合。</p>
+<p>修法：快捷方式参数里 GUID 不加引号。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\...\LRProc.exe 0a7d3e14-6b2f-4c85-9a41-2e5d8f7b1c93 &quot;D:\Serial Port Tool\FlyMcu\FlyMcu.exe&quot;</span><br></pre></td></tr></table></figure>
+
+<p>中间还有一段弯路值得一提：我一度顺着”LRProc 是 x64、hook DLL 分 x86&#x2F;x64，那它可能根本注入不了 32 位程序”往下查，因为 <code>Get-Process</code> 给出的模块列表里看不到任何 hook DLL——后来发现这个进程模块枚举本身就不完整（一个 GUI 进程只列出 7 个模块），差点误判。<strong>工具给出的”没有”，要先验证它测得准不准。</strong></p>
+<h2 id="验收"><a href="#验收" class="headerlink" title="验收"></a>验收</h2><p>验证窗口文字有个小技巧：控制台自己的编码也可能是坏的（这台机器 ACP&#x3D;65001），直接打印中文会二次失真。改成打印 UTF-8 的 base64：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[<span class="type">Convert</span>]::ToBase64String([<span class="type">Text.Encoding</span>]::UTF8.GetBytes(<span class="variable">$title</span>))</span><br><span class="line"><span class="comment"># Rmx5TWN1IFYwLjE4OC0t5Y2V54mH5py65Zyo57q/57yW56iL5LiT5a62LS13d3cubWN1aXNwLmNvbQ==</span></span><br><span class="line"><span class="comment"># → FlyMcu V0.188--单片机在线编程专家--www.mcuisp.com</span></span><br></pre></td></tr></table></figure>
+
+<p>现在桌面「FlyMcu 中文」快捷方式双击即用，另留了一个 <code>launch_flymcu_cn.bat</code> 备用；之前失败的 LE 目录和调试脚本全部清掉。</p>
+<h2 id="三条可复用的"><a href="#三条可复用的" class="headerlink" title="三条可复用的"></a>三条可复用的</h2><ol>
+<li><strong>判断乱码先看分层</strong>：ASCII 正常、非 ASCII 全坏 → 是编码，不是字体。查 <code>HKLM\SYSTEM\CurrentControlSet\Control\Nls\CodePage</code> 的 <code>ACP</code>，中文系统应为 936；65001 就是 UTF-8 Beta 开了。</li>
+<li><strong>上游的包可能真的是坏的</strong>：LE 缺 <code>LECommonLibrary.dll</code>，三个版本都缺。核对 zip 中央目录，比反复重装快得多。</li>
+<li><strong>静默 exit 0 优先怀疑”忽略返回值”</strong>：这次是 37 字符偏移加未检查的 Detours 返回值，把失败伪装成了成功。能读源码就读；读不到就做参数对照实验，一次只变一个变量。</li>
+</ol>
+<p>昨天那篇 Rust 重写还停在握手，原版程序暂时退不了休。但至少今天，先把它的中文界面还回来了。</p>
+
+  </div>
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner"><span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span></div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>离开这个工程也活 · Hayasaka-Blog</title>
+  <meta name="description" content="二十七号，把避障的三刀补齐。   一层一层来。硬件层，PB5 加内部下拉——AF 输入脚在 CubeMX 的 GPIO Settings 里是 n&#x2F;a，工具不给这个选项，只能写进 msp.c 的 USER CODE 区，保护区第二次实战，上次是 D19 的 include。测量层，三发中值加超时清窗：[500, 480, 100] 平均 360、中值 480，一个野值能把平均拽走 1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="离开这个工程也活">
+<meta property="og:url" content="https://hayasaka-naoji.github.io/2026/10/28/2026-10-28/index.html">
+<meta property="og:site_name" content="Hayasaka-Blog">
+<meta property="og:description" content="二十七号，把避障的三刀补齐。   一层一层来。硬件层，PB5 加内部下拉——AF 输入脚在 CubeMX 的 GPIO Settings 里是 n&#x2F;a，工具不给这个选项，只能写进 msp.c 的 USER CODE 区，保护区第二次实战，上次是 D19 的 include。测量层，三发中值加超时清窗：[500, 480, 100] 平均 360、中值 480，一个野值能把平均拽走 1">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-28T13:30:00.000Z">
+<meta property="article:modified_time" content="2026-10-28T13:09:48.551Z">
+<meta property="article:author" content="早坂直治">
+<meta property="article:tag" content="日记">
+<meta property="article:tag" content="生活">
+<meta name="twitter:card" content="summary">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/lang.js"></script>
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+  <aside class="sidebar" aria-label="导航侧边栏">
+    <div class="sidebar-inner">
+      <a class="logo" href="/">Hayasaka-Blog</a>
+
+      <nav class="sidebar-nav">
+        
+        
+          <a class="sidebar-link" href="/" data-i18n="nav.home">首页</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%97%A5%E8%AE%B0/" data-i18n="nav.diary">日记</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%9D%82%E8%B0%88/" data-i18n="nav.essay">杂谈</a>
+        
+          <a class="sidebar-link" href="/categories/%E5%BC%80%E5%8F%91/" data-i18n="nav.dev">开发</a>
+        
+          <a class="sidebar-link" href="/categories/%E8%AE%BE%E8%AE%A1%E7%81%B5%E6%84%9F/" data-i18n="nav.design">设计灵感</a>
+        
+          <a class="sidebar-link" href="/archives/" data-i18n="nav.archive">归档</a>
+        
+          <a class="sidebar-link" href="/tags/" data-i18n="nav.tags">标签</a>
+        
+          <a class="sidebar-link" href="/about/" data-i18n="nav.about">关于</a>
+        
+      </nav>
+
+      <div class="sidebar-foot">
+        <span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span>
+        <div class="lang-switcher lang-switcher--sidebar" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      </div>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="lang-switcher lang-switcher--header" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      <a class="profile" href="https://github.com/hayasaka-naoji" target="_blank" rel="noopener">
+        <img class="profile-avatar" src="https://github.com/hayasaka-naoji.png" alt="早坂直治 的头像" loading="lazy">
+        <span class="profile-name">早坂直治</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="main">
+    <article class="post">
+  <header class="post-header">
+    <div class="card-meta">
+      <span class="card-date">2026.10.28</span>
+      
+        <span class="card-weather">阴 21°C</span>
+      
+      
+        <span class="card-tags">
+          
+            <span class="tag">日记</span>
+          
+            <span class="tag">生活</span>
+          
+        </span>
+      
+    </div>
+    <h1 class="post-title">离开这个工程也活</h1>
+  </header>
+
+  <div class="post-content">
+    <p>  二十七号，把避障的三刀补齐。</p>
+<p>  一层一层来。硬件层，PB5 加内部下拉——AF 输入脚在 CubeMX 的 GPIO Settings 里是 n&#x2F;a，工具不给这个选项，只能写进 msp.c 的 USER CODE 区，保护区第二次实战，上次是 D19 的 include。测量层，三发中值加超时清窗：<code>[500, 480, 100]</code> 平均 360、中值 480，一个野值能把平均拽走 120mm；窗里攒够三发才算数，插回探头先清窗，旧数据不许混进中值。策略层，急停直跳——<code>mm &lt; 200</code> 的判断放在 <code>switch</code> 之前，不管现在在 GO 还是 SLOW，太近就停。</p>
+<p>  延迟也有账。中值对阶跃要等两发，加一拍 200ms；急停省掉 SLOW 那一拍，减一拍；两刀一起上，最坏还是两拍 400ms。40% 档约 200rpm，6.5cm 的轮，折合 27cm。相抵不等于归零，先写基线，再算增量。</p>
+<p>  全天最值钱的一幕是拔线。拔 Echo，PB5 悬空当天线，捡到 50Hz 工频的半周，算出 1.7m 的”有效距离”，fail-safe 被绕过去，车会照着假距离跑。加了下拉之后，连续三十多行 timeout，一条假距离都没有——把危险断线变成了安全断线。</p>
+<p>  同一天还发了两篇开发文章。PlatformIO 的包锁和双核心折腾完，实测直连 82 KB&#x2F;s、代理 3.2~4.9 MB&#x2F;s，顺手固化成脚本；Rust 重写 FlyMcu 写到 51 个测试全过，只卡在同步握手那一个 0x7F——先归档，不假装它过了。</p>
+<p>  二十八号，总考核。</p>
+<p>  口试八题 5.25 分，没过闸；四道变式补考 3 分，按分放行。实操过了，而且烧录前写的五条预测全中，D22 以来第一次。板上按键调目标七档循环：0、50、100、150、200、250、300、回 0 顺带翻页；TGT 200 时 act 稳在 199<del>202，out 40</del>42；300 档 act 298<del>302，out 58</del>60，没撞天花板 70。</p>
+<p>  这一天有两条新知识。一条是增量式记不住归零：目标回 0、转速回 0，out 却冻在 5%——e&#x3D;0 则 Δu&#x3D;0，累加器既不涨也不降。位置式有独立的 integral 可以清零，增量式把积分藏在输出里，输出本身就是账本，限幅只夹住、不归零。另一条是按键语义按页面分叉：电机页的 KEY1 不翻页，改成目标 +50，第一版写完就进了死胡同——进去出不来。修法是满档 300 再按一次，回 0 顺带翻页。判据很简单：任何”按键语义按状态分叉”的设计，先问一句这个状态下怎么出去。</p>
+<p>  还有一个坑值得记。改”一行”的时候把外层 <code>if (key_count == KEY_OK)</code> 整段铲平了，结果每 10ms 无条件翻页，页码疯转、TGT 自己跑。只换门不拆楼，改完自检”不满条件时那层还挡不挡”。旧的自验公式也跟着作废——D18 立过”页码 ≡ 按键数 % 4”，电机页按键不推进页码，这条不变式就废了。靠不变式自证的判据，改了语义都要重验。</p>
+<p>  夜里的 D29 是补弱，补到最后补出一件大事：从空工程搭。</p>
+<p>  新建工程，只配五样外设——SWD、HSE 到 72MHz、USART1 + DMA、TIM2 10ms 心跳、TIM1 CH4 油门，外加 TIM4 编码器接口，移植清单没强调它，但 <code>Motor_Start</code> 依赖它，少一个就链接不过。<code>app.h</code> 原来 extern 九个句柄，新工程只配五个，原样搬必挂——能编译不等于能链接，extern 是空头支票，没人兑现就是 undefined reference。删掉四个句柄、六个共享状态，剩五个，0 错误 0 警告，text 24052。上板，<code>f</code> 一开，油门从 16 爬到 40，约三秒无超调，稳在 act 198~204 &#x2F; out 41，跟 Zdemo 一模一样。</p>
+<p>  发令枪顺序写反了一句：写成”开执行器、再开时基”，正确是”时基先跑，执行器后开”。今天无害，因为 CCR 是 0、闭环没开；但规则是规则——执行器一动，就得有时基在看它。</p>
+<p>  还有一条不是技术的。补考里有一题，要我自己打开 <code>avoid.h</code> 贴三行原文，再打开 <code>Docs/工程结构.md</code> 贴三句库规则。第一轮两条都没交，理由是”当前会话没有文件系统访问权”——这是替自己找的台阶。<code>avoid.h</code> 和 <code>avoid.c</code> 在同一个工程里，双击就能开。第二轮把 <code>avoid.h</code> 交了，<code>.md</code> 还是请人贴。新观察：代码文件算文件，文档文件不算文件。记事本就能看，两者没有区别。</p>
+<p>  然后收课。D30 不急着定竞赛方向，只做复盘。一个月，五周：GPIO 到时钟树，定时器到 PWM，OLED 到环形缓冲，PID 到避障三态机，最后库化。能力盘点 13 项 A——不看教程能做完；2 项 B——CubeMX 高级参数、HAL 源码级，都是靠踩坑记住的；4 项 C——SPI、FreeRTOS、无线、视觉。最硬的一条证据就是 D29 那个新工程：从不会点灯，到能搭一个闭环系统。</p>
+<p>  归档说明写得很清楚：这个文件夹冻结，D 编号属于这一个月，下一阶段从 A01 开始，不写 D31。进阶计划十二课也写好了，SPI → 源码级寄存器 → FreeRTOS，但开工日填的是 2027 年初。写下来是为了开工那天不用从零想，不是明天就要跑。</p>
+<p>  下午 Python 转正。P12 字符串方法，主课第一天，正餐是把串口送来的一整行变成能用的一对键值：<code>raw.strip()</code> 去脏，<code>split(&quot;: &quot;)</code> 一刀两块，<code>k, v</code> 解包，<code>int(v)</code> 才能算。C 里这套是 fgets 加手写去 <code>\r\n</code> 的循环加 strtok 或 sscanf，Python 三句。还有一条二级补丁：考场 3.5.2 不认 f-string，得用 <code>format()</code>，今天练习全用它写。</p>
+<p>  Python 也暴露了两个老毛病。入口又用了 <code>py</code>，首行打出来是 3.14.2，P11 刚立的规矩第二次破——<code>py</code> 是启动器挑最新版，统一用 <code>python</code>（3.13.13）。更要命的是代码不落盘：连跑两轮都是空白输出、退出码 0，磁盘上还是 10 月 15 号的 69 行纯注释模板。空白加退出码 0，意思是文件里没有可执行语句。第三轮改用记事本直接编辑，落盘 37 行，跑出 13 行。根子是代码写在聊天里，不写进文件——从此先写文件，再跑，再贴。</p>
+<p>  晚上给库做大扫除。学习线收进 <code>学习笔记/</code>，六条排好；书签和安装说明收进 <code>工具与skill/</code>；模板补了一份 C 系列的；MOC 重写成一页”现在在做什么”。整理不是删，是让每样东西有地址。</p>
+<p>  晚上还清了一桩旧账。FlyMcu 满屏菱形，不是程序坏了，是这台机器开了 UTF-8 Beta——代码页 65001，Delphi 老程序按 GBK 存的中文被当 UTF-8 解，全变成替换符，ASCII 一个没坏，中文全碎。修法没动系统（要重启），按进程模拟区域：先试 Locale Emulator，它 GitHub 上三个版本的包都缺 LECommonLibrary.dll，一启动就抛异常静默退出；换 Locale Remulator，配置只留代码页 936、不钩 LCID——LCID 一钩，FlyMcu 反过来切成英文。最后一个坑在快捷方式：LRProc 的源码按固定 37 个字符偏移截命令行，GUID 一带引号就多出个前导空格，CreateProcess 失败，它连返回值都不检查，exit 0 走人。引号去掉，桌面「FlyMcu 中文」双击就是中文。昨天重写它还卡在握手，今天先把原版的中文还给它；这段技术过程也写进了开发专栏。</p>
+<p>  一个月前，D01 是把 PC13 点亮。今天最后一件大事，是在一个全新工程里配齐五个外设，自己写发令枪，一次跑通闭环。中间那些坑——圈错花括号、改了不重跑、引脚凭印象、ISR 里打印、只交顺手那半——都留在笔记里，当字典用。</p>
+<p>  明天 Python 是 P13，命令行通讯录。C 系列 11 月 2 号才开工，先空两天。</p>
+<p>  安！</p>
+
+  </div>
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner"><span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span></div>
+  </footer>
+</body>
+</html>
