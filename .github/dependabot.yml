@@ -4,4 +4,5 @@ updates:
   directory: "/"
   schedule:
     interval: daily
-  open-pull-requests-limit: 20
+  # 0 = 关闭版本更新 PR；安全更新不受此限制，在仓库 Settings 中单独控制
+  open-pull-requests-limit: 0
