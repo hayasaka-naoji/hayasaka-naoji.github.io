@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>一天六个里程碑 · Hayasaka-Blog</title>
+  <meta name="description" content="11 月 1 日，GradPilot 从一份设计文档开始。11:45 文档落盘，12:47 第一个提交，17:16 第六个提交。六个里程碑，六个 commit。这不是六天，是一天里的六次推进。 先画边界，再写代码GradPilot 是一个毕业设计智能辅导平台，两个角色：  教师端：对论文做初步审查——格式与结构用规则查，分章内容用 LLM 看，选题重复度跟历届库比。 学生端：用自然语言查资料、找历">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一天六个里程碑">
+<meta property="og:url" content="https://hayasaka-naoji.github.io/2026/11/02/2026-11-02-gradpilot-m1-m6/index.html">
+<meta property="og:site_name" content="Hayasaka-Blog">
+<meta property="og:description" content="11 月 1 日，GradPilot 从一份设计文档开始。11:45 文档落盘，12:47 第一个提交，17:16 第六个提交。六个里程碑，六个 commit。这不是六天，是一天里的六次推进。 先画边界，再写代码GradPilot 是一个毕业设计智能辅导平台，两个角色：  教师端：对论文做初步审查——格式与结构用规则查，分章内容用 LLM 看，选题重复度跟历届库比。 学生端：用自然语言查资料、找历">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-11-02T12:30:00.000Z">
+<meta property="article:modified_time" content="2026-11-02T11:52:49.229Z">
+<meta property="article:author" content="早坂直治">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="FastAPI">
+<meta property="article:tag" content="RAG">
+<meta property="article:tag" content="React">
+<meta property="article:tag" content="开发">
+<meta name="twitter:card" content="summary">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/lang.js"></script>
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+  <aside class="sidebar" aria-label="导航侧边栏">
+    <div class="sidebar-inner">
+      <a class="logo" href="/">Hayasaka-Blog</a>
+
+      <nav class="sidebar-nav">
+        
+        
+          <a class="sidebar-link" href="/" data-i18n="nav.home">首页</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%97%A5%E8%AE%B0/" data-i18n="nav.diary">日记</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%9D%82%E8%B0%88/" data-i18n="nav.essay">杂谈</a>
+        
+          <a class="sidebar-link" href="/categories/%E5%BC%80%E5%8F%91/" data-i18n="nav.dev">开发</a>
+        
+          <a class="sidebar-link" href="/categories/%E8%AE%BE%E8%AE%A1%E7%81%B5%E6%84%9F/" data-i18n="nav.design">设计灵感</a>
+        
+          <a class="sidebar-link" href="/archives/" data-i18n="nav.archive">归档</a>
+        
+          <a class="sidebar-link" href="/tags/" data-i18n="nav.tags">标签</a>
+        
+          <a class="sidebar-link" href="/about/" data-i18n="nav.about">关于</a>
+        
+      </nav>
+
+      <div class="sidebar-foot">
+        <span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span>
+        <div class="lang-switcher lang-switcher--sidebar" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      </div>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="lang-switcher lang-switcher--header" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      <a class="profile" href="https://github.com/hayasaka-naoji" target="_blank" rel="noopener">
+        <img class="profile-avatar" src="https://github.com/hayasaka-naoji.png" alt="早坂直治 的头像" loading="lazy">
+        <span class="profile-name">早坂直治</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="main">
+    <article class="post">
+  <header class="post-header">
+    <div class="card-meta">
+      <span class="card-date">2026.11.02</span>
+      
+      
+        <span class="card-tags">
+          
+            <span class="tag">开发</span>
+          
+            <span class="tag">FastAPI</span>
+          
+            <span class="tag">React</span>
+          
+            <span class="tag">Agent</span>
+          
+            <span class="tag">RAG</span>
+          
+        </span>
+      
+    </div>
+    <h1 class="post-title">一天六个里程碑</h1>
+  </header>
+
+  <div class="post-content">
+    <p>11 月 1 日，GradPilot 从一份设计文档开始。11:45 文档落盘，12:47 第一个提交，17:16 第六个提交。六个里程碑，六个 commit。这不是六天，是一天里的六次推进。</p>
+<h2 id="先画边界，再写代码"><a href="#先画边界，再写代码" class="headerlink" title="先画边界，再写代码"></a>先画边界，再写代码</h2><p>GradPilot 是一个毕业设计智能辅导平台，两个角色：</p>
+<ul>
+<li><strong>教师端</strong>：对论文做初步审查——格式与结构用规则查，分章内容用 LLM 看，选题重复度跟历届库比。</li>
+<li><strong>学生端</strong>：用自然语言查资料、找历年类似选题、让 Agent 基于自己的初稿做引导式提问；回答要带引用溯源卡片。</li>
+</ul>
+<p>技术栈是单体内核：React 19 + Vite + TypeScript 的前端，FastAPI 的后端，SQLite 存业务数据，LanceDB 存向量，聊天走 SSE，认证走 JWT。设计文档里把八项 Agent 能力全部列成 first-party：个性化、记忆、子智能体、插件、MCP、技能、命令、钩子。<code>graphs</code> 只依赖 <code>Kernel</code> 接口，不直接碰具体实现——这是以后拆成独立 worker 或独立服务的前置条件。</p>
+<p>先单体不是偷懒。一个人要在一天里做出能演示的东西，单条 <code>uvicorn</code> 命令启动、一个 SQLite 文件、一个前端 dev server，比微服务省掉大量“服务发现”和“端口对不上”的时间。边界留在代码里，不留在部署图上。</p>
+<h2 id="六个提交"><a href="#六个提交" class="headerlink" title="六个提交"></a>六个提交</h2><table>
+<thead>
+<tr>
+<th>时间</th>
+<th>里程碑</th>
+<th>做了什么</th>
+<th>git shortstat</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>12:47</td>
+<td>M1</td>
+<td>骨架：JWT 双角色、聊天、SSE、Provider 抽象</td>
+<td>65 files, +5986</td>
+</tr>
+<tr>
+<td>13:57</td>
+<td>M2</td>
+<td>论文摄取：docx&#x2F;pdf 解析、章节分块、LanceDB RAG</td>
+<td>22 files, +1453</td>
+</tr>
+<tr>
+<td>15:07</td>
+<td>M3</td>
+<td>学生检索 Agent：supervisor 路由、工具、技能、命令、来源卡片</td>
+<td>29 files, +4455</td>
+</tr>
+<tr>
+<td>15:39</td>
+<td>M4</td>
+<td>教师审查：规则检查、LLM 分章意见、历年对比、报告页</td>
+<td>18 files, +1249</td>
+</tr>
+<tr>
+<td>16:13</td>
+<td>M5</td>
+<td>记忆、个性化、钩子与站内通知</td>
+<td>22 files, +1018</td>
+</tr>
+<tr>
+<td>17:16</td>
+<td>M6</td>
+<td>MCP 客户端：stdio&#x2F;http、动态工具、审计、管理页</td>
+<td>15 files, +818</td>
+</tr>
+</tbody></table>
+<p>插入行数包含测试和前端，不等于手写业务代码；但它能说明每个里程碑都不是空壳。M3 的 +4455 最多，因为学生侧要同时落 supervisor 路由、五个检索工具、技能注入、命令注册和来源卡片。</p>
+<h2 id="几个真正决定形状的实现"><a href="#几个真正决定形状的实现" class="headerlink" title="几个真正决定形状的实现"></a>几个真正决定形状的实现</h2><p><strong>SSE 只做单向流。</strong> 聊天接口把 token、工具调用、来源、结束、错误拆成不同事件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">_sse</span>(<span class="params">event: <span class="built_in">str</span>, data: <span class="built_in">dict</span></span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&quot;event: <span class="subst">&#123;event&#125;</span>\ndata: <span class="subst">&#123;json.dumps(data, ensure_ascii=<span class="literal">False</span>)&#125;</span>\n\n&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>前端按事件名分支：<code>token</code> 逐字追加，<code>tool_call</code> 显示“正在检索 arXiv…”，<code>sources</code> 渲染来源卡片，<code>done</code> 解锁输入框，<code>error</code> 显示错误。工具执行进度和最终答案走同一条流，不用轮询。</p>
+<p><strong>Provider 抽象让测试不依赖 key。</strong> 智谱、DeepSeek、ollama、fake 四个实现共用一套接口。fake 返回固定回复，后端测试不需要网络、不需要 API key；演示时切到 ollama 的 <code>qwen2.5:7b</code>，embedding 用 <code>bge-m3</code>。</p>
+<p><strong>摄取是章节感知的。</strong> docx 按 Heading 1&#x2F;2 提章节树；pdf 用字号和加粗做启发式，失败标 <code>parsed_partial</code>，不静默丢内容。每个（章，节）成一个 chunk，超过 1000 字按段落续切，chunk 带 breadcrumb，比如 <code>第3章 系统设计 &gt; 3.2 模块A</code>。学生初稿和历届库同表，检索时按 <code>visibility</code> 过滤：学生只能检到公开库和自己的稿子。</p>
+<p><strong>审查是三段拼起来的。</strong> 第一段是确定性规则：章节完整性、图表编号跳号&#x2F;重复、GB&#x2F;T 7714 著录正则、字数统计；第二段让 reviewer-agent 按章输出结构化 JSON（优点、带原文引用的问题、修改建议）；第三段把题目和摘要做 embedding，检索历年 top-k，让 LLM 归纳选题重复度和差异化建议。三段汇成一份 Markdown 报告，前端渲染，浏览器打印就是 PDF。</p>
+<p><strong>记忆分短期和长期。</strong> 短期是会话消息滑动窗口，默认近 20 条，超限用快模型摘要；长期是 <code>memories</code> 表加 LanceDB 向量表，每 8 轮触发一次反思，LLM 提炼候选，和既有记忆相似度超过 0.92 就跳过，每轮取 top-5 注入 system prompt。</p>
+<p><strong>MCP 工具是动态进来的。</strong> 管理页添加 server，支持 stdio 和 streamable-http；连接后 <code>list_tools</code>，工具名加前缀 <code>mcp__&lt;server&gt;__</code>，调用写 <code>mcp_calls</code> 审计表。演示用的计算器 server 提供 <code>calc_add</code> 和 <code>now_time</code>，学生说“请务必使用计算器工具算 123 加 456”，回答 579，审计记录约 8 ms。</p>
+<h2 id="打包、测试与没收拾完的尾巴"><a href="#打包、测试与没收拾完的尾巴" class="headerlink" title="打包、测试与没收拾完的尾巴"></a>打包、测试与没收拾完的尾巴</h2><p>晚上把前端构建、后端打成 PyInstaller onedir 便携包：产物 571 MB，<code>gradpilot.exe</code> 约 30 MB，<code>.env</code> 和 <code>data/</code> 放在 exe 同级，换机器不用装 Python&#x2F;Node。目标机器仍然要装 ollama 并拉模型，或者改用云端 API key；杀软对 PyInstaller 产物可能误报，这是打包方式带来的，不是程序本身。</p>
+<p>验证结果分两半：</p>
+<ul>
+<li><strong>前端</strong>：11 条测试全过，<code>vite build</code> 154 ms，JS 258.47 kB（gzip 81.90 kB）。</li>
+<li><strong>后端</strong>：81 条测试，77 过、4 挂。4 条失败全部在 <code>test_student_graph.py</code>；单独跑这个文件，4 条又全过。也就是说，功能单跑是通的，整套跑挂更像测试之间的共享状态&#x2F;顺序问题，而不是业务逻辑坏了。下一步先查隔离和事件循环，不要先改业务。</li>
+</ul>
+<p>还有 804 条 warning，能看到 <code>datetime.utcnow()</code> 的弃用提示；<code>README</code> 还停在“M1 骨架完成”，git log 已经到 M6。文档落后于代码，也是债。M7 的打磨还没开始。</p>
+<h2 id="能演示不等于能交付"><a href="#能演示不等于能交付" class="headerlink" title="能演示不等于能交付"></a>能演示不等于能交付</h2><p>一天六个里程碑，靠的不是打字快，是每个里程碑先有一句可验收的话：</p>
+<ul>
+<li>M1：登录后能流式聊天。</li>
+<li>M2：上传 docx 能解析、能检索到 chunk。</li>
+<li>M3：学生问“历届有没有类似选题”，回答带来源卡片。</li>
+<li>M4：教师发起审查，能拿到三段报告并打印。</li>
+<li>M5：连续聊 8 轮后，新问题能体现之前的偏好。</li>
+<li>M6：添加一个 MCP server，工具能进 Agent 并被审计。</li>
+</ul>
+<p>每句话都能当场演示，里程碑才不会变成“代码写完了但不知道对不对”。</p>
+<p>能演示也不等于能交付。4 条顺序相关的失败、M7 的打磨、README 的同步，都是下一步。先让演示稳定，再谈规模。</p>
+
+  </div>
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner"><span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span></div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>从一本通讯录到一组函数 · Hayasaka-Blog</title>
+  <meta name="description" content="10 月 29 日到 31 日，Python 这条线走完了第 3 周的收尾，又开了第 4 周的头。三天里做的事不复杂：一本命令行通讯录、一场周末考核、六个函数课件，外加一份还没正式上的 P15 课件。真正留下来的，是几个很具体的判据。 一本通讯录，两层下标P13 的交付物是 day10_contacts.py，42 行，四个功能：加人、列人、查人、退出。数据形状只有两层： 123contacts">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从一本通讯录到一组函数">
+<meta property="og:url" content="https://hayasaka-naoji.github.io/2026/11/02/2026-11-02-python-p13-p15/index.html">
+<meta property="og:site_name" content="Hayasaka-Blog">
+<meta property="og:description" content="10 月 29 日到 31 日，Python 这条线走完了第 3 周的收尾，又开了第 4 周的头。三天里做的事不复杂：一本命令行通讯录、一场周末考核、六个函数课件，外加一份还没正式上的 P15 课件。真正留下来的，是几个很具体的判据。 一本通讯录，两层下标P13 的交付物是 day10_contacts.py，42 行，四个功能：加人、列人、查人、退出。数据形状只有两层： 123contacts">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-11-02T12:10:00.000Z">
+<meta property="article:modified_time" content="2026-11-02T11:52:47.579Z">
+<meta property="article:author" content="早坂直治">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="开发">
+<meta name="twitter:card" content="summary">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/lang.js"></script>
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+  <aside class="sidebar" aria-label="导航侧边栏">
+    <div class="sidebar-inner">
+      <a class="logo" href="/">Hayasaka-Blog</a>
+
+      <nav class="sidebar-nav">
+        
+        
+          <a class="sidebar-link" href="/" data-i18n="nav.home">首页</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%97%A5%E8%AE%B0/" data-i18n="nav.diary">日记</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%9D%82%E8%B0%88/" data-i18n="nav.essay">杂谈</a>
+        
+          <a class="sidebar-link" href="/categories/%E5%BC%80%E5%8F%91/" data-i18n="nav.dev">开发</a>
+        
+          <a class="sidebar-link" href="/categories/%E8%AE%BE%E8%AE%A1%E7%81%B5%E6%84%9F/" data-i18n="nav.design">设计灵感</a>
+        
+          <a class="sidebar-link" href="/archives/" data-i18n="nav.archive">归档</a>
+        
+          <a class="sidebar-link" href="/tags/" data-i18n="nav.tags">标签</a>
+        
+          <a class="sidebar-link" href="/about/" data-i18n="nav.about">关于</a>
+        
+      </nav>
+
+      <div class="sidebar-foot">
+        <span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span>
+        <div class="lang-switcher lang-switcher--sidebar" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      </div>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="lang-switcher lang-switcher--header" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      <a class="profile" href="https://github.com/hayasaka-naoji" target="_blank" rel="noopener">
+        <img class="profile-avatar" src="https://github.com/hayasaka-naoji.png" alt="早坂直治 的头像" loading="lazy">
+        <span class="profile-name">早坂直治</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="main">
+    <article class="post">
+  <header class="post-header">
+    <div class="card-meta">
+      <span class="card-date">2026.11.02</span>
+      
+      
+        <span class="card-tags">
+          
+            <span class="tag">开发</span>
+          
+            <span class="tag">Python</span>
+          
+            <span class="tag">学习笔记</span>
+          
+        </span>
+      
+    </div>
+    <h1 class="post-title">从一本通讯录到一组函数</h1>
+  </header>
+
+  <div class="post-content">
+    <p>10 月 29 日到 31 日，Python 这条线走完了第 3 周的收尾，又开了第 4 周的头。三天里做的事不复杂：一本命令行通讯录、一场周末考核、六个函数课件，外加一份还没正式上的 P15 课件。真正留下来的，是几个很具体的判据。</p>
+<h2 id="一本通讯录，两层下标"><a href="#一本通讯录，两层下标" class="headerlink" title="一本通讯录，两层下标"></a>一本通讯录，两层下标</h2><p>P13 的交付物是 <code>day10_contacts.py</code>，42 行，四个功能：加人、列人、查人、退出。数据形状只有两层：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">contacts = []                                      <span class="comment"># 整本通讯录</span></span><br><span class="line">contacts.append(&#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;王小美&quot;</span>, <span class="string">&quot;phone&quot;</span>: <span class="string">&quot;114514&quot;</span>&#125;)  <span class="comment"># 一条记录</span></span><br><span class="line"><span class="built_in">print</span>(contacts[<span class="number">0</span>][<span class="string">&quot;name&quot;</span>])                         <span class="comment"># 先取第 0 条，再取 name</span></span><br></pre></td></tr></table></figure>
+
+<p>C 里写 <code>arr[0].name</code>，先定位结构体，再取字段；Python 把它拆成两对方括号，第一对定位“第几条”，第二对定位“这条里的哪个字段”。</p>
+<p>坑也在这里。<code>append</code> 是就地修改，返回值是 <code>None</code>。写成 <code>contacts = contacts.append(...)</code>，整本通讯录会被换成 <code>None</code>，下一轮 <code>len()</code> 直接炸。P12 学的是“字符串方法返回新串”，P13 遇到的是另一套世界：list 的方法就地改，返回 <code>None</code>。</p>
+<p>查人要用 <code>found</code> 旗标：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">found = <span class="literal">False</span></span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> contacts:</span><br><span class="line">    <span class="keyword">if</span> c[<span class="string">&quot;name&quot;</span>] == key:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;&#123;&#125; &#123;&#125;&quot;</span>.<span class="built_in">format</span>(c[<span class="string">&quot;name&quot;</span>], c[<span class="string">&quot;phone&quot;</span>]))</span><br><span class="line">        found = <span class="literal">True</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> found:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;查无此人: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(key))</span><br></pre></td></tr></table></figure>
+
+<p><code>found = False</code> 必须写在 <code>for</code> 外面。写进循环里，每轮都会重来一次，最后一条不是她要找的，就永远打“查无此人”。这是“循环里改的东西，初始化必须在循环外”的第三次上门：P07 的循环变量、P08 的累加器、今天的旗标。</p>
+<p>空表也要吭声。<code>if len(contacts) == 0: print(&quot;通讯录是空的&quot;)</code>，不写这行，空表时 <code>l</code> 一条都不打就回菜单，用户会以为程序坏了。P11 的 <code>default</code> 分支“不许静默”，从命令扩到了数据。</p>
+<h2 id="从输出现场反推哪一行没执行"><a href="#从输出现场反推哪一行没执行" class="headerlink" title="从输出现场反推哪一行没执行"></a>从输出现场反推哪一行没执行</h2><p>第一次跑通讯录，输入 <code>a</code> 之后没有 <code>姓名:</code> 提示，直接弹回菜单；<code>l</code>、<code>f</code> 全静默。翻代码之前，先看判据：</p>
+<ul>
+<li>完整版 <code>a</code> 分支第一行就是 <code>input(&quot;姓名: &quot;)</code>，屏幕上必然有 <code>姓名:</code> 并停住等输入；没有，说明跑的还是骨架。</li>
+<li><code>q</code> 却打印了“再见”，说明这个分支是真的。</li>
+</ul>
+<p>不用读代码，光看输出现场就定位到“跑的是骨架，不是完成版”。后来 <code>wc -l</code> 核对，93 行是骨架，42 行是完成版。这个法子比翻代码快，也比猜可靠。</p>
+<h2 id="考核②：口试满分，实操欠一条"><a href="#考核②：口试满分，实操欠一条" class="headerlink" title="考核②：口试满分，实操欠一条"></a>考核②：口试满分，实操欠一条</h2><p>周末考核②在第 3 周收尾。口试 5 题，第一次零补讲：list 与 tuple 只差可变性；<code>ports[&quot;LED4&quot;] = 4</code> 与 <code>ports[&quot;LED1&quot;] = 9</code> 都是插入&#x2F;更新，炸的是读取缺失键；<code>&quot;confirmed: 42&quot;.split()</code> 得到 <code>[&#39;confirmed:&#39;, &#39;42&#39;]</code>；<code>raw.strip()</code> 丢新串、原串不变；三种“没找到”分别是 <code>KeyError</code>、<code>in</code> 返回布尔、<code>find</code> 返回 <code>-1</code>。</p>
+<p>实操是 <code>day11_exam.py</code>，32 行，一个串口报文解析器。关键不是 <code>if</code>，是解包之前先数块数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">parts = clean.split(<span class="string">&quot;: &quot;</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(parts) != <span class="number">2</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;报文格式错误: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(raw))</span><br><span class="line">    <span class="keyword">continue</span></span><br><span class="line">dev, cmd = parts</span><br></pre></td></tr></table></figure>
+
+<p>块数对了才解包，后面两个 <code>strip()</code> 和 <code>if not dev or not cmd</code> 是额外防守：<code>LED1 : on</code> 也能吃，<code>: on</code>、<code>LED1: </code> 不会崩。</p>
+<p>问题是验收单列了 4 个分支，实跑只交了 3 个，缺的是空回车。判卷时我独立复跑了缺的两例，程序没问题，但“证据”少一条。这已经是 P10 连着欠到 P13 的第 4 次同族问题。规矩定死：<strong>验收单上有几条，就跑几条，缺一条算没交。</strong></p>
+<h2 id="P14：函数把一坨-while-拆开"><a href="#P14：函数把一坨-while-拆开" class="headerlink" title="P14：函数把一坨 while 拆开"></a>P14：函数把一坨 while 拆开</h2><p>P14 的主线只有一句话：把 P13 那一坨 <code>while</code> 拆开，一个功能一个 <code>def</code>。函数的三个问题是：叫什么名字、要喂什么、吐不吐东西。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add_contact</span>(<span class="params">book, name, phone</span>):</span><br><span class="line">    book.append(&#123;<span class="string">&quot;name&quot;</span>: name, <span class="string">&quot;phone&quot;</span>: phone&#125;)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>(book)</span><br></pre></td></tr></table></figure>
+
+<p><code>print</code> 和 <code>return</code> 是两条出口。<code>print</code> 出去的东西人看得见，程序拿不到；<code>return</code> 出去的东西程序能接着算。P13 的通讯录只能打印、不能存档，根子就在这里。今天起立规矩：函数只负责算和返回，打印交给调用方。</p>
+<p>没写 <code>return</code> 的函数，返回值是 <code>None</code>。<code>print</code> 自己也是这种人：<code>z = print(&quot;hi&quot;)</code>，先打 <code>hi</code>，<code>z</code> 是 <code>None</code>。更麻烦的是 <code>None</code> 会一路传下去：<code>pass</code> 的函数返回 <code>None</code>，<code>total = add_contact(...)</code> 拿到 <code>None</code>，最后打印出 <code>共 None 人</code>，没有 traceback，没有红字，程序“正常运行”，结果毫无意义。</p>
+<p><code>return k, v</code> 返回的是一个元组，不是两个值。可以整接、可以拆、可以下标：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r = parse(<span class="string">&quot;confirmed: 42&quot;</span>)      <span class="comment"># (&#x27;confirmed&#x27;, 42)</span></span><br><span class="line">a, b = parse(<span class="string">&quot;confirmed: 42&quot;</span>)   <span class="comment"># 拆开接</span></span><br></pre></td></tr></table></figure>
+
+<p>局部变量是另起一间房。函数里的 <code>pin = 99</code> 改不到外面的 <code>pin</code>；但 list 传进去是本体，<code>book.append(...)</code> 外面看得见。两个现象相反，两个都对。第 7 周讲“引用 vs 拷贝”时再细拆。</p>
+<p>今天踩的坑很集中：</p>
+<ul>
+<li><strong><code>import</code> 会执行整个被导入文件。</strong> PyCharm 自动塞了三个 import，一执行，<code>day09_exercises.py</code> 顶层那些 <code>print</code> 全跑了一遍，输出前面凭空多出 25 行旧内容。</li>
+<li><strong><code>clamp</code> 条件顺序反了。</strong> <code>clamp(50, 0, 100)</code> 返回 100；先判上界，再判下界，两头都没出界才原样。</li>
+<li><strong><code>parse_report</code> 按 <code>&quot;\n&quot;</code> 切。</strong> 题面是按 <code>&quot;: &quot;</code> 切，三题全走“解析失败”。</li>
+<li><strong><code>int(k)</code> 潜伏。</strong> 键是字符串，只有值是数字；修好第一个 bug，第二个才露头。</li>
+<li><strong>自查表打勾走过场。</strong> 输出里“出现了”就当 ✅，实际 clamp 是 <code>10/100/100</code>、parse 三题全失败。“出现”不等于“对了”，每条要拿题面的期望值逐字比一遍。</li>
+</ul>
+<p>结果：跟敲 6&#x2F;6，门票 5&#x2F;5（含一条自发更正），练习首轮 2&#x2F;4、改后 4&#x2F;4，收尾题七步通过。<code>day13_contacts.py</code> 的主循环只剩四步：问姓名、问电话、调用 <code>add_contact</code>、打印。</p>
+<h2 id="P15：课件先埋钉子"><a href="#P15：课件先埋钉子" class="headerlink" title="P15：课件先埋钉子"></a>P15：课件先埋钉子</h2><p>10 月 31 日写好了 P15《作用域与默认参数》的课件 <code>day14_scope_defaults.py</code>，函数体还留着 <code>pass</code>，这一课还没正式跑。课件里埋了三扇暗门：</p>
+<ol>
+<li>函数里“读”外面的变量，直接读得到。</li>
+<li>函数里一出现赋值，Python 就认定它是局部变量，从头到尾都是自己那间房；真要改外面的，得挂 <code>global</code>。</li>
+<li>默认参数在 <code>def</code> 那一刻就算好、冻住，不是每次调用现算。</li>
+</ol>
+<p>第三扇门后面是今天最该先记住的坑：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add_cmd_bug</span>(<span class="params">cmd, history=[]</span>):</span><br><span class="line">    history.append(cmd)</span><br><span class="line">    <span class="keyword">return</span> history</span><br></pre></td></tr></table></figure>
+
+<p><code>[]</code> 是 <code>def</code> 时造出来的一个列表，两次调用共用同一个。<code>add_cmd_bug(&quot;r&quot;)</code> 得到 <code>[&#39;r&#39;]</code>，再来一次 <code>add_cmd_bug(&quot;s&quot;)</code> 得到 <code>[&#39;r&#39;, &#39;s&#39;]</code>，第二次凭空多了一个 <code>&#39;r&#39;</code>。C 里对应的就是 <code>static</code> 局部变量：只初始化一次，之后一直活着。</p>
+<p>好版本是默认 <code>None</code>，进函数先判空：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add_cmd</span>(<span class="params">cmd, history=<span class="literal">None</span></span>):</span><br><span class="line">    <span class="keyword">if</span> history <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        history = []</span><br><span class="line">    history.append(cmd)</span><br><span class="line">    <span class="keyword">return</span> history</span><br></pre></td></tr></table></figure>
+
+<p>课件把“坏版本”和“好版本”并排留在一个文件里，填完跑一次就能看见差别。这一课还没上，坑已经先知道了；下次进 REPL，先猜后敲。</p>
+<h2 id="带走的三条判据"><a href="#带走的三条判据" class="headerlink" title="带走的三条判据"></a>带走的三条判据</h2><p>这三天真正带走的不是语法，是三条判据：</p>
+<ul>
+<li>程序不对，先看输出现场，反推哪一行没执行。</li>
+<li>输出里“出现”不等于“对了”，要拿期望值逐字比。</li>
+<li>验收单上有几条，就跑几条，缺一条算没交。</li>
+</ul>
+<p>P15 的函数还没写，但坑已经先知道了。下一次上课，先猜后敲，再把回显原样贴回来。</p>
+
+  </div>
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner"><span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span></div>
+  </footer>
+</body>
+</html>

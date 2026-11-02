@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>给一台净水器画三张图 · Hayasaka-Blog</title>
+  <meta name="description" content="11 月 1 日，净水机项目从一堆文字方案推进到三张 Excalidraw 图：一张讲为什么做，一张讲系统里有什么，一张讲取水时怎么动。纸面阶段最容易堆功能，图的价值是把“想做什么”压成“能做到什么、怎么验收”。 第一张：对“人喝到的水”负责现有净水器只管“水”：脱盐率、滤芯寿命、TDS 显示。智能水杯只管“人”：喝了多少、该不该提醒。两边都很拥挤，但中间有一块空白：这一家人实际喝到的水，没有人负">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给一台净水器画三张图">
+<meta property="og:url" content="https://hayasaka-naoji.github.io/2026/11/02/2026-11-02-purifier-three-diagrams/index.html">
+<meta property="og:site_name" content="Hayasaka-Blog">
+<meta property="og:description" content="11 月 1 日，净水机项目从一堆文字方案推进到三张 Excalidraw 图：一张讲为什么做，一张讲系统里有什么，一张讲取水时怎么动。纸面阶段最容易堆功能，图的价值是把“想做什么”压成“能做到什么、怎么验收”。 第一张：对“人喝到的水”负责现有净水器只管“水”：脱盐率、滤芯寿命、TDS 显示。智能水杯只管“人”：喝了多少、该不该提醒。两边都很拥挤，但中间有一块空白：这一家人实际喝到的水，没有人负">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-11-02T12:20:00.000Z">
+<meta property="article:modified_time" content="2026-11-02T11:52:45.876Z">
+<meta property="article:author" content="早坂直治">
+<meta property="article:tag" content="STM32">
+<meta property="article:tag" content="净水机">
+<meta property="article:tag" content="开发">
+<meta property="article:tag" content="系统设计">
+<meta name="twitter:card" content="summary">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/lang.js"></script>
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+  <aside class="sidebar" aria-label="导航侧边栏">
+    <div class="sidebar-inner">
+      <a class="logo" href="/">Hayasaka-Blog</a>
+
+      <nav class="sidebar-nav">
+        
+        
+          <a class="sidebar-link" href="/" data-i18n="nav.home">首页</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%97%A5%E8%AE%B0/" data-i18n="nav.diary">日记</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%9D%82%E8%B0%88/" data-i18n="nav.essay">杂谈</a>
+        
+          <a class="sidebar-link" href="/categories/%E5%BC%80%E5%8F%91/" data-i18n="nav.dev">开发</a>
+        
+          <a class="sidebar-link" href="/categories/%E8%AE%BE%E8%AE%A1%E7%81%B5%E6%84%9F/" data-i18n="nav.design">设计灵感</a>
+        
+          <a class="sidebar-link" href="/archives/" data-i18n="nav.archive">归档</a>
+        
+          <a class="sidebar-link" href="/tags/" data-i18n="nav.tags">标签</a>
+        
+          <a class="sidebar-link" href="/about/" data-i18n="nav.about">关于</a>
+        
+      </nav>
+
+      <div class="sidebar-foot">
+        <span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span>
+        <div class="lang-switcher lang-switcher--sidebar" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      </div>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="lang-switcher lang-switcher--header" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      <a class="profile" href="https://github.com/hayasaka-naoji" target="_blank" rel="noopener">
+        <img class="profile-avatar" src="https://github.com/hayasaka-naoji.png" alt="早坂直治 的头像" loading="lazy">
+        <span class="profile-name">早坂直治</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="main">
+    <article class="post">
+  <header class="post-header">
+    <div class="card-meta">
+      <span class="card-date">2026.11.02</span>
+      
+      
+        <span class="card-tags">
+          
+            <span class="tag">开发</span>
+          
+            <span class="tag">STM32</span>
+          
+            <span class="tag">净水机</span>
+          
+            <span class="tag">系统设计</span>
+          
+        </span>
+      
+    </div>
+    <h1 class="post-title">给一台净水器画三张图</h1>
+  </header>
+
+  <div class="post-content">
+    <p>11 月 1 日，净水机项目从一堆文字方案推进到三张 Excalidraw 图：一张讲为什么做，一张讲系统里有什么，一张讲取水时怎么动。纸面阶段最容易堆功能，图的价值是把“想做什么”压成“能做到什么、怎么验收”。</p>
+<h2 id="第一张：对“人喝到的水”负责"><a href="#第一张：对“人喝到的水”负责" class="headerlink" title="第一张：对“人喝到的水”负责"></a>第一张：对“人喝到的水”负责</h2><p>现有净水器只管“水”：脱盐率、滤芯寿命、TDS 显示。智能水杯只管“人”：喝了多少、该不该提醒。两边都很拥挤，但中间有一块空白：<strong>这一家人实际喝到的水，没有人负责。</strong></p>
+<p>首杯水是最典型的例子。停用一夜后，RO 膜两侧浓度极化，第一杯水的脱盐率会明显下降；检索资料里提到传统产品首杯可能低于 70%。而早上起床给老人、孩子倒的第一杯水，恰恰是全天最可能被直饮、又最差的一杯。</p>
+<p>项目的锚点创意是把两个原本分开的量相乘：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">个人饮水暴露 = 水质风险 × 个人饮用量</span><br></pre></td></tr></table></figure>
+
+<p>按人、按时刻相乘。D1 做成 0~100 的暴露评分，D2 按暴露决定滤芯更换的必要性。这样一来，决策对象就从“水”变成了“人喝到的水”：同样是 200 ml，早上第一杯和下午达标后的一杯，风险不一样；同一天的两杯水，老人和孩子喝，暴露也不一样。</p>
+<p>关键不在多加一个 TDS 传感器，而在把水质、时间、人、量绑进同一个决策。逻辑链只有四段：感知水的时变质量 → 耦合个人饮用量 → 做暴露评分与换芯决策 → 在对的时点、对的人，给针对这一杯水的建议。</p>
+<h2 id="第二张：系统总览"><a href="#第二张：系统总览" class="headerlink" title="第二张：系统总览"></a>第二张：系统总览</h2><p>第二张图把方案拆成四层。</p>
+<p><strong>感知层</strong>：TDS 进水、TDS 出水、NTC 水温、流量计、称重杯垫 HX711、漏水检测线。水质看两端，水量看流量计和杯垫，安全兜底看漏水检测。</p>
+<p><strong>执行层</strong>：两个阀。V0 是 12V 常闭电磁阀，只在取水会话开启时得电，平时关着防滴漏；V1 是 12V 单电控三通阀，得电走送水路，断电由弹簧回位到分流路。<strong>断电默认分流</strong>是整套方案的失效安全方向：没测过的水，永远去回用壶，不去人嘴。</p>
+<p><strong>交互层</strong>：2.4 寸大字屏（阶段一先复用已验证的 0.95 寸 SSD1306 OLED）、语音播报、WS2812 灯带、一个大物理按键。语音只做输出，不做识别；按键是唯一物理输入，短按和长按 2 秒承担不同语义。</p>
+<p><strong>扩展层</strong>：DS3231 高精度 RTC、AT24C32 EEPROM、可选的 ESP32-C3 通信子板。通信子板拔掉，机器本体功能 100% 保留——这是“无网完整”的硬约束，不是口号。</p>
+<p>主控是天空星 STM32F407VGT6，裸机协作调度，1 ms 节拍，无阻塞状态机。四条设计基调写在技术方案最前面：</p>
+<ol>
+<li><strong>以测代算</strong>：出水、分流、停机这些安全判定，只信在线实测，不停留在推算。</li>
+<li><strong>非阻塞</strong>：所有外设读取走状态机 + 时间片，1 ms 节拍内不等待。</li>
+<li><strong>无网完整</strong>：通信子板不在，本体照常工作。</li>
+<li><strong>失效安全</strong>：断电或死机时，取水点不出水，原净水器龙头通路保留。</li>
+</ol>
+<h2 id="第三张：取水会话状态机"><a href="#第三张：取水会话状态机" class="headerlink" title="第三张：取水会话状态机"></a>第三张：取水会话状态机</h2><p>第三张图是整台机器最像“程序”的部分：取水会话主状态机，标题叫“不对称滞回门控”。</p>
+<p>核心判据只有一个比值：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r(t) = TDS_out(t) / (0.05 × TDS_in(t))</span><br></pre></td></tr></table></figure>
+
+<p>分母的 <code>0.05</code> 表示“进水的 5%”，也就是 95% 脱盐。<code>r ≤ 1</code> 代表出水 TDS 不超过进水的 5%，达标；<code>r &gt; 1</code> 未达标。</p>
+<p>状态只有七个：</p>
+<ul>
+<li><code>IDLE</code>：待机，杯放上杯垫、按键后进 <code>PRE_CHECK</code>。</li>
+<li><code>PRE_CHECK</code>：开 V0，读 TDS 直到稳定。<code>r ≤ 1</code> 进 <code>SERVE</code>，<code>r &gt; 1</code> 进 <code>DIVERT</code>。</li>
+<li><code>SERVE</code>：定量计数，取杯或再按停，进 <code>SETTLE</code>。</li>
+<li><code>DIVERT</code>：V1 断电位，倒计时，呼吸灯 + T03 语音；期间 <code>r ≤ 1</code> 可以回到 <code>SERVE</code>。</li>
+<li><code>SETTLE</code>：记事件、扣账，回 <code>IDLE</code>。</li>
+<li><code>STOPPED</code>：单次会话分流累计超过 30 秒仍未达标，关 V0、T05 语音、红灯、记 <code>stall</code> 事件。</li>
+<li><code>LEAK</code>：任意状态漏水触发，关 V0、V1 保持分流、T07，解锁需要人工确认。</li>
+</ul>
+<p>“不对称滞回”体现在三个阈值上：<strong>进入送水 <code>r ≤ 1.00</code>，维持送水 <code>r ≤ 1.20</code>，回落到分流 <code>r &gt; 1.20</code>。</strong> 进入要严，维持给 20% 的滞回带，避免阀在阈值附近来回抖；一旦超过 1.20，直接回分流。它不是一条线，是一条带方向的带子，而且默认方向偏向安全：分流不需要电，送水才需要。</p>
+<p><code>LEAK</code> 也不是复位，是锁定。关 V0、V1 保持分流，必须人工确认才能退出。漏水是水电安全事件，不能让它自己恢复。</p>
+<p>这张图最有用的一点，是把“创意”变成了可测试的契约。M4 的验收标准写得很具体：阀驱动 + 状态机干跑，用 LED 模拟 V0&#x2F;V1，不通水，状态机全路径单测通过——包括 30 秒超时和漏水锁定。也就是说，在碰水之前，先让逻辑在灯上跑一遍。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* PRE_CHECK 的核心转移，示意 */</span></span><br><span class="line"><span class="keyword">if</span> (!tds_stable) &#123;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (r &lt;= <span class="number">1.00f</span>) &#123;</span><br><span class="line">    state = SERVE;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    state = DIVERT;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三张图各回答一个问题"><a href="#三张图各回答一个问题" class="headerlink" title="三张图各回答一个问题"></a>三张图各回答一个问题</h2><ul>
+<li>创意逻辑链回答“为什么做”：不是再加一个水质显示，而是把水质风险和个人饮用量相乘。</li>
+<li>系统总览回答“有什么”：感知、执行、交互、扩展四层，阀的默认位决定失效安全方向。</li>
+<li>取水状态机回答“怎么动”：七个状态、三个阈值、一个 30 秒超时、一个漏水锁定。</li>
+</ul>
+<p>图不是答辩 PPT 的装饰。硬件按总览接线，固件按状态机写 <code>switch</code>，答辩按逻辑链讲清楚为什么。三个人看同一张图，才不会各说各的。</p>
+<p>下一步不是接线，是先让状态机干跑。等 LED 能把 <code>IDLE → PRE_CHECK → DIVERT → SERVE → SETTLE</code> 和两条异常路径都走对，再去碰水。</p>
+
+  </div>
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner"><span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span></div>
+  </footer>
+</body>
+</html>
