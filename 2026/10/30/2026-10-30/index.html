@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>缺一条算没交 · Hayasaka-Blog</title>
+  <meta name="description" content="三十号，考核②和 P14 挤在一天。   口试五题，第一次零补讲。list 与 tuple 只差可变性；ports[&quot;LED4&quot;] &#x3D; 4 与 ports[&quot;LED1&quot;] &#x3D; 9 都是插入&#x2F;更新，炸的是读取缺失键；&quot;confirmed: 42&quot;.split() 得到 [&#39;confirmed:&#39;, &#39;4">
+<meta property="og:type" content="article">
+<meta property="og:title" content="缺一条算没交">
+<meta property="og:url" content="https://hayasaka-naoji.github.io/2026/10/30/2026-10-30/index.html">
+<meta property="og:site_name" content="Hayasaka-Blog">
+<meta property="og:description" content="三十号，考核②和 P14 挤在一天。   口试五题，第一次零补讲。list 与 tuple 只差可变性；ports[&quot;LED4&quot;] &#x3D; 4 与 ports[&quot;LED1&quot;] &#x3D; 9 都是插入&#x2F;更新，炸的是读取缺失键；&quot;confirmed: 42&quot;.split() 得到 [&#39;confirmed:&#39;, &#39;4">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-30T14:00:00.000Z">
+<meta property="article:modified_time" content="2026-11-02T12:42:11.672Z">
+<meta property="article:author" content="早坂直治">
+<meta property="article:tag" content="日记">
+<meta property="article:tag" content="生活">
+<meta name="twitter:card" content="summary">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/lang.js"></script>
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+  <aside class="sidebar" aria-label="导航侧边栏">
+    <div class="sidebar-inner">
+      <a class="logo" href="/">Hayasaka-Blog</a>
+
+      <nav class="sidebar-nav">
+        
+        
+          <a class="sidebar-link" href="/" data-i18n="nav.home">首页</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%97%A5%E8%AE%B0/" data-i18n="nav.diary">日记</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%9D%82%E8%B0%88/" data-i18n="nav.essay">杂谈</a>
+        
+          <a class="sidebar-link" href="/categories/%E5%BC%80%E5%8F%91/" data-i18n="nav.dev">开发</a>
+        
+          <a class="sidebar-link" href="/categories/%E8%AE%BE%E8%AE%A1%E7%81%B5%E6%84%9F/" data-i18n="nav.design">设计灵感</a>
+        
+          <a class="sidebar-link" href="/archives/" data-i18n="nav.archive">归档</a>
+        
+          <a class="sidebar-link" href="/tags/" data-i18n="nav.tags">标签</a>
+        
+          <a class="sidebar-link" href="/about/" data-i18n="nav.about">关于</a>
+        
+      </nav>
+
+      <div class="sidebar-foot">
+        <span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span>
+        <div class="lang-switcher lang-switcher--sidebar" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      </div>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="lang-switcher lang-switcher--header" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      <a class="profile" href="https://github.com/hayasaka-naoji" target="_blank" rel="noopener">
+        <img class="profile-avatar" src="https://github.com/hayasaka-naoji.png" alt="早坂直治 的头像" loading="lazy">
+        <span class="profile-name">早坂直治</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="main">
+    <article class="post">
+  <header class="post-header">
+    <div class="card-meta">
+      <span class="card-date">2026.10.30</span>
+      
+        <span class="card-weather">阴 24°C</span>
+      
+      
+        <span class="card-tags">
+          
+            <span class="tag">日记</span>
+          
+            <span class="tag">生活</span>
+          
+        </span>
+      
+    </div>
+    <h1 class="post-title">缺一条算没交</h1>
+  </header>
+
+  <div class="post-content">
+    <p>  三十号，考核②和 P14 挤在一天。</p>
+<p>  口试五题，第一次零补讲。list 与 tuple 只差可变性；<code>ports[&quot;LED4&quot;] = 4</code> 与 <code>ports[&quot;LED1&quot;] = 9</code> 都是插入&#x2F;更新，炸的是读取缺失键；<code>&quot;confirmed: 42&quot;.split()</code> 得到 <code>[&#39;confirmed:&#39;, &#39;42&#39;]</code>；<code>raw.strip()</code> 丢新串、原串不变；三种“没找到”分别是 <code>KeyError</code>、<code>in</code> 返回布尔、<code>find</code> 返回 <code>-1</code>。答完自己都觉得顺。</p>
+<p>  实操是 <code>day11_exam.py</code>，32 行，一个串口报文解析器。关键不是 <code>if</code>，是解包之前先数块数：<code>parts = clean.split(&quot;: &quot;)</code>，<code>len(parts) != 2</code> 就报格式错误，块数对了才 <code>dev, cmd = parts</code>。后面两个 <code>strip()</code> 和 <code>if not dev or not cmd</code> 是额外防守，<code>LED1 : on</code> 也能吃，<code>: on</code>、<code>LED1: </code> 不会崩。</p>
+<p>  问题是验收单列了四个分支，实跑只交了三个，缺的是空回车。判卷时我独立补跑了缺的两例，程序没问题，但“证据”少一条。这已经是 P10 连着欠到 P13 的第四次同族问题。规矩今天定死：验收单上有几条，就跑几条，缺一条算没交。</p>
+<p>  下午 P14，函数。主线只有一句话：把 P13 那一坨 <code>while</code> 拆开，一个功能一个 <code>def</code>。函数的三个问题是：叫什么名字、要喂什么、吐不吐东西。<code>print</code> 和 <code>return</code> 是两条出口——<code>print</code> 出去的东西人看得见，程序拿不到；<code>return</code> 出去的东西程序能接着算。P13 的通讯录只能打印、不能存档，根子就在这里。</p>
+<p>  没写 <code>return</code> 的函数返回 <code>None</code>，<code>print</code> 自己也是。<code>z = print(&quot;hi&quot;)</code>，先打 <code>hi</code>，<code>z</code> 是 <code>None</code>。更麻烦的是 <code>None</code> 会一路传下去：<code>total = add_contact(...)</code> 拿到 <code>None</code>，最后打印“共 None 人”，没有 traceback，没有红字，程序“正常运行”，结果毫无意义。</p>
+<p>  今天踩的坑很集中。<code>import</code> 会执行整个被导入文件，PyCharm 自动塞的三个 import 一跑，<code>day09_exercises.py</code> 顶层那些 <code>print</code> 全出来，输出前面凭空多 25 行旧内容。<code>clamp</code> 条件顺序反了，<code>clamp(50, 0, 100)</code> 返回 100；<code>parse_report</code> 按 <code>&quot;\n&quot;</code> 切，题面要的是 <code>&quot;: &quot;</code>，三题全走“解析失败”；<code>int(k)</code> 潜伏在后面，修好第一个才露头。最要命的是自查表打勾走过场：输出里“出现了”就打勾，实际 clamp 是 <code>10/100/100</code>、parse 三题全失败。“出现”不等于“对了”，每条要拿题面的期望值逐字比一遍。</p>
+<p>  结果：跟敲 6&#x2F;6，门票 5&#x2F;5，练习首轮 2&#x2F;4、改后 4&#x2F;4，收尾题七步通过。晚上把 <code>day13_contacts.py</code> 的主循环压到四步：问姓名、问电话、调用 <code>add_contact</code>、打印。</p>
+<p>  今天两件事其实是一件事：口试答对，不等于验收单交齐；输出里出现过，不等于结果对了。</p>
+<p>  安！</p>
+
+  </div>
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner"><span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span></div>
+  </footer>
+</body>
+</html>

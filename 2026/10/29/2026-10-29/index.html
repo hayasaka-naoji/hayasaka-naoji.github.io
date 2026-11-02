@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第一层下标 · Hayasaka-Blog</title>
+  <meta name="description" content="二十九号，P13，命令行通讯录。   交付物 42 行，四个功能：加人、列人、查人、退出。数据形状两层：contacts 是整本通讯录，一条记录是 {&quot;name&quot;: ..., &quot;phone&quot;: ...}。C 里写 arr[0].name，先定位结构体再取字段；Python 拆成两对方括号，contacts[0][&quot;name&quot;]，第一对">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第一层下标">
+<meta property="og:url" content="https://hayasaka-naoji.github.io/2026/10/29/2026-10-29/index.html">
+<meta property="og:site_name" content="Hayasaka-Blog">
+<meta property="og:description" content="二十九号，P13，命令行通讯录。   交付物 42 行，四个功能：加人、列人、查人、退出。数据形状两层：contacts 是整本通讯录，一条记录是 {&quot;name&quot;: ..., &quot;phone&quot;: ...}。C 里写 arr[0].name，先定位结构体再取字段；Python 拆成两对方括号，contacts[0][&quot;name&quot;]，第一对">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-29T13:30:00.000Z">
+<meta property="article:modified_time" content="2026-11-02T12:42:10.252Z">
+<meta property="article:author" content="早坂直治">
+<meta property="article:tag" content="日记">
+<meta property="article:tag" content="生活">
+<meta name="twitter:card" content="summary">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/lang.js"></script>
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+  <aside class="sidebar" aria-label="导航侧边栏">
+    <div class="sidebar-inner">
+      <a class="logo" href="/">Hayasaka-Blog</a>
+
+      <nav class="sidebar-nav">
+        
+        
+          <a class="sidebar-link" href="/" data-i18n="nav.home">首页</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%97%A5%E8%AE%B0/" data-i18n="nav.diary">日记</a>
+        
+          <a class="sidebar-link" href="/categories/%E6%9D%82%E8%B0%88/" data-i18n="nav.essay">杂谈</a>
+        
+          <a class="sidebar-link" href="/categories/%E5%BC%80%E5%8F%91/" data-i18n="nav.dev">开发</a>
+        
+          <a class="sidebar-link" href="/categories/%E8%AE%BE%E8%AE%A1%E7%81%B5%E6%84%9F/" data-i18n="nav.design">设计灵感</a>
+        
+          <a class="sidebar-link" href="/archives/" data-i18n="nav.archive">归档</a>
+        
+          <a class="sidebar-link" href="/tags/" data-i18n="nav.tags">标签</a>
+        
+          <a class="sidebar-link" href="/about/" data-i18n="nav.about">关于</a>
+        
+      </nav>
+
+      <div class="sidebar-foot">
+        <span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span>
+        <div class="lang-switcher lang-switcher--sidebar" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      </div>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="lang-switcher lang-switcher--header" role="group" aria-label="语言切换">
+  <button type="button" data-lang="zh" data-i18n="lang.zh">中</button>
+  <button type="button" data-lang="en" data-i18n="lang.en">EN</button>
+  <button type="button" data-lang="ja" data-i18n="lang.ja">日</button>
+</div>
+
+      <a class="profile" href="https://github.com/hayasaka-naoji" target="_blank" rel="noopener">
+        <img class="profile-avatar" src="https://github.com/hayasaka-naoji.png" alt="早坂直治 的头像" loading="lazy">
+        <span class="profile-name">早坂直治</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="main">
+    <article class="post">
+  <header class="post-header">
+    <div class="card-meta">
+      <span class="card-date">2026.10.29</span>
+      
+        <span class="card-weather">阴 23°C</span>
+      
+      
+        <span class="card-tags">
+          
+            <span class="tag">日记</span>
+          
+            <span class="tag">生活</span>
+          
+        </span>
+      
+    </div>
+    <h1 class="post-title">第一层下标</h1>
+  </header>
+
+  <div class="post-content">
+    <p>  二十九号，P13，命令行通讯录。</p>
+<p>  交付物 42 行，四个功能：加人、列人、查人、退出。数据形状两层：<code>contacts</code> 是整本通讯录，一条记录是 <code>{&quot;name&quot;: ..., &quot;phone&quot;: ...}</code>。C 里写 <code>arr[0].name</code>，先定位结构体再取字段；Python 拆成两对方括号，<code>contacts[0][&quot;name&quot;]</code>，第一对定位第几条，第二对定位这条里的哪个字段。</p>
+<p>  坑在 <code>append</code>。它是就地修改，返回值是 <code>None</code>。写成 <code>contacts = contacts.append(...)</code>，整本通讯录被换成 <code>None</code>，下一轮 <code>len()</code> 直接炸。P12 刚学完字符串方法返回新串，今天碰到另一套世界：list 的方法就地改，返回 <code>None</code>。</p>
+<p>  查人要用 <code>found</code> 旗标，而且初始化必须写在 <code>for</code> 外面。写进去，每轮重来一次，最后一条不是她要找的，就永远打“查无此人”。这是同一个毛病的第三次上门：P07 的循环变量、P08 的累加器、今天的旗标——循环里改的东西，初始化必须在循环外。空表也要吭声，<code>len(contacts) == 0</code> 打一句“通讯录是空的”，不然按 <code>l</code> 一条不吐就回菜单，用户会以为程序坏了。</p>
+<p>  第一次跑就遇到一个很干净的现场：输 <code>a</code>，没有“姓名:”提示，直接弹回菜单；<code>l</code>、<code>f</code> 全静默；<code>q</code> 却老老实实打“再见”。不用翻代码，光看输出就能判：<code>a</code> 分支第一行就是 <code>input(&quot;姓名: &quot;)</code>，屏幕上没有这一行，说明跑的不是完成版。后来 <code>wc -l</code> 一对，93 行是骨架，42 行是完成版。先看它说到哪一步，再决定翻哪一页。</p>
+<p>  今天没学新语法，学的是这条判据：程序不对，先看输出现场，反推哪一行没执行。</p>
+<p>  安！</p>
+
+  </div>
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner"><span data-i18n="footer">© 2026 早坂直治 · Built with Hexo</span></div>
+  </footer>
+</body>
+</html>
